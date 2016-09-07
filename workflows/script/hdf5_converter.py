@@ -45,6 +45,7 @@ if __name__=='__main__':
 	m.assignDomain(domain)
 	m._buildindex(m.domainIdx['chrom'],m.domainIdx['start'],m.domainIdx['end'],m.domainIdx['flag'])
 	m.genome = args.genome
+	m.resolution = 'TAD'
 	m.save(args.outputfile)
 	# if matrixfile is hdf5 file,
 		# if output_file is not exist, then copy the matrixfile to output_file

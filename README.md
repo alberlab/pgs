@@ -48,7 +48,7 @@ To initialize PGS Helper:
 
 The following GUI will appear:
 
-![PGS Helper] (docs/images/pgs_helper.png =450x)
+![PGS Helper] (docs/images/pgs_helper.png)
    
 #### A. PGS Project – Directory ####
 
@@ -61,7 +61,7 @@ will be stored in the directory.
 
 Specify the directory of pgs source code using the ``Browser`` button on right side.
 
-#### C. Input #### 
+#### C. Input ####
 
 1. Input Data
 

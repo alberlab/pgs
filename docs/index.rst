@@ -3,8 +3,8 @@
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
-PGS: Population of Genome Structures modeling tools package
-===========================================================
+PGS: Population-based Genome Structures modeling tools package
+==============================================================
 
 PGS is a population-based 3D genome-modeling package implemented by python. 
 The software takes Hi-C matrix and chromosome regions segmentation or topological associated domains(TADs) information, 

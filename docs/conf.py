@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 #
-# PGS: Population of Genome Structures documentation build configuration file, created by
+# PGS: Population-based Genome Structures modeling documentation build configuration file, created by
 # sphinx-quickstart on Wed Sep  7 16:04:00 2016.
 #
 # This file is execfile()d with the current directory set to its
@@ -54,7 +54,7 @@ source_suffix = '.rst'
 master_doc = 'index'
 
 # General information about the project.
-project = u'PGS: Population of Genome Structures'
+project = u'PGS: Population-based Genome Structure modeling'
 copyright = u'2016, Hanjun Shin, Nan Hua, Harianto Tjong'
 author = u'Hanjun Shin, Nan Hua, Harianto Tjong'
 
@@ -239,7 +239,7 @@ latex_elements = {
 # (source start file, target name, title,
 #  author, documentclass [howto, manual, or own class]).
 latex_documents = [
-  (master_doc, 'PGS.tex', u'PGS: Population of Genome Structures Documentation',
+  (master_doc, 'PGS.tex', u'PGS: Population-based Genome Structure Modeling Documentation',
    u'Hanjun Shin, Nan Hua, Harianto Tjong', 'manual'),
 ]
 
@@ -269,7 +269,7 @@ latex_documents = [
 # One entry per manual page. List of tuples
 # (source start file, name, description, authors, manual section).
 man_pages = [
-    (master_doc, 'pgs', u'PGS: Population of Genome Structures Documentation',
+    (master_doc, 'pgs', u'PGS: Population-based Genome Structure Modeling Documentation',
      [author], 1)
 ]
 
@@ -283,8 +283,8 @@ man_pages = [
 # (source start file, target name, title, author,
 #  dir menu entry, description, category)
 texinfo_documents = [
-  (master_doc, 'PGS', u'PGS: Population of Genome Structures Documentation',
-   author, 'PGS', 'One line description of project.',
+  (master_doc, 'PGS', u'PGS: Population-based Genome Structure Modeling Documentation',
+   author, 'PGS', 'Population-based Genome Structure Modeling tools package.',
    'Miscellaneous'),
 ]
 

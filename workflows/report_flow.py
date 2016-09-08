@@ -105,18 +105,18 @@ class ReportFlow(WorkflowRunner):
 		report_src = '%s/report_summary.py' % self.input_config['source_dir']
 		struct_dir = '%s/structure' % self.input_config['output_dir']
 		
-		prob = self.input_config['modeling_parameters']['theta_list'][-1]
-		violation_file = '%s/violation.json' % struct_dir
-		if os.path.isfile( violation_file ) :
-			with open(violation_file, 'r') as file:
-				data = json.load(file)
+		#prob = self.input_config['modeling_parameters']['theta_list'][-1]
+		#violation_file = '%s/violation.json' % struct_dir
+		#if os.path.isfile( violation_file ) :
+		#	with open(violation_file, 'r') as file:
+		#		data = json.load(file)
 	
-			if data.has_key( "pLast" ) : 
-				prob = data["pLast"]
-			else :
-				raise Exception("Cannot find violation rate for last prob")
-		else :
-			raise Exception("Cannot find violation file, %s" % violation_file)
+		#	if data.has_key( "pLast" ) : 
+		#		prob = data["pLast"]
+		#	else :
+		#		raise Exception("Cannot find violation rate for last prob")
+		#else :
+		#	raise Exception("Cannot find violation file, %s" % violation_file)
 							
 		nstruct = self.input_config['modeling_parameters']['num_of_structures']
 		output_dir = '%s/report' % self.input_config['output_dir']
@@ -132,8 +132,7 @@ class ReportFlow(WorkflowRunner):
 		python_path = subprocess.Popen("which python", shell=True, stdout=subprocess.PIPE).stdout.read().rstrip('\n')		
 		args = [python_path,
 			report_src, 
-			'--struct_dir', struct_dir, 
-			'--prob', prob,
+			'--struct_dir', struct_dir,
 			('--nstruct %i' % nstruct),
 			'--output_dir', output_dir,
 			'--genome', genome,

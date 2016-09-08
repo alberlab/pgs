@@ -35,7 +35,7 @@ sns.set(style="white")
 from alab.analysis import structuresummary
 from fetchVioDetail import plotVio
 import alab.plots
-
+import json
 
 __author__  = "Nan Hua"
 __credits__ = ["Hanjun Shin"]
@@ -47,7 +47,7 @@ __email__   = "nhua@usc.edu"
 if __name__=='__main__':
 	parser = argparse.ArgumentParser(description="report_summary.py")
 	parser.add_argument('-s', '--struct_dir', type=str, required=True)  #probility matrix file in contactmatrix format
-	parser.add_argument('-p', '--prob', type=str, required=True)    #last frequency
+	#parser.add_argument('-p', '--prob', type=str, required=True)    #last frequency
 	parser.add_argument('-n', '--nstruct', type=int, required=True) #current freq
 	parser.add_argument('-o', '--output_dir', type=str, required=True) #current freq
 	parser.add_argument('-g', '--genome', type=str, required=True)
@@ -55,6 +55,20 @@ if __name__=='__main__':
 	parser.add_argument('-m', '--probMat', type=str, required=True)
 	
 	args = parser.parse_args()
+	
+	last_theta = 1
+	violation_file = '%s/violation.json' % args.struct_dir
+	if os.path.isfile( violation_file ) :
+			with open(violation_file, 'r') as file:
+				data = json.load(file)
+	
+			if data.has_key( "pLast" ) : 
+				last_theta = data["pLast"]
+			else :
+				raise Exception("Cannot find violation rate for last_theta")
+	else :
+		raise Exception("Cannot find violation file, %s" % violation_file)
+		
 	
 	chrList = []
 	if args.genome == 'hg19':
@@ -68,7 +82,7 @@ if __name__=='__main__':
 	#summary
 	##################################################
 	#call(["mkdir", "-p", "%s/summary" % args.output_dir])
-	s = structuresummary(target=args.struct_dir, usegrp=args.prob, nstruct=int(args.nstruct) )
+	s = structuresummary(target=args.struct_dir, usegrp=last_theta, nstruct=int(args.nstruct) )
 	#s.save('%s/summary/summary.hss' % args.output_dir)
     
 	##################################################
@@ -79,7 +93,7 @@ if __name__=='__main__':
 		file.write('Violation Ratio: %f' % (s.totalViolations.mean()/s.totalRestraints.mean()))
 		#print 'Violation Ratio:',s.totalViolations.mean()/s.totalRestraints.mean()
 		
-	plotVio(args.prob, args.nstruct, args.struct_dir, "%s/violations/violation_plot.pdf" % args.output_dir)
+	plotVio(last_theta, args.nstruct, args.struct_dir, "%s/violations/violation_plot.pdf" % args.output_dir)
 	    
 	##################################################
     #heatmap after modeling

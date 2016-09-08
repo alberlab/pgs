@@ -21,6 +21,7 @@ the minimal `Miniconda <http://conda.pydata.org/miniconda.html>`_ are suitable f
 Install IMP using conda:
 
 ::
+
     $ conda config --add channels salilab
     $ conda install imp
 
@@ -29,6 +30,7 @@ All other dependencies for imp and python packages will be automatically install
 Then install PGS workflow packages:
 
 ::
+
     $ python setup.py install
     
 PGS Helper GUI

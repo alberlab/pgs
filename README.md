@@ -48,11 +48,7 @@ To initialize PGS Helper:
 
 The following GUI will appear:
 
-.. image:: docs/images/pgs_helper.png
-   :height: 1182px
-   :width: 934px
-   :scale: 50 %
-   :align: center
+![PGS Helper] (docs/images/pgs_helper.png)
    
 #### A. PGS Project – Directory ####
 
@@ -71,17 +67,17 @@ Specify the directory of pgs source code using the ``Browser`` button on right s
 
   *Option 1 : Raw(txt) + TAD*
   
-     | Raw contact matrix file(txt) : First three columns are chromosome, start position(bp), and end position(bp) and followed by contact matrix. 
-     | TAD_file(bed) : Chromatin Segmentation information or TAD file should be converted into [bed file format](https://genome.ucsc.edu/FAQ/FAQformat.html). 
+  ... Raw contact matrix file(txt) : First three columns are chromosome, start position(bp), and end position(bp) and followed by contact matrix. 
+  ... TAD_file(bed) : Chromatin Segmentation information or TAD file should be converted into [bed file format](https://genome.ucsc.edu/FAQ/FAQformat.html). 
   
   *Option 2 : Prob(txt) + TAD*
   
-     | Probability matrix file(txt)
-     | TAD_file(bed)
+  ... Probability matrix file(txt)
+  ... TAD_file(bed)
      
   *Option 3 : Prob(hdf5)*
   
-     | Probability matrix file(hdf5) : If the user have ever generated probability matrix using pgs, then user can use previous probability matrix. This process will skip the first workflow, buildTADMap task.
+  ... Probability matrix file(hdf5) : If the user have ever generated probability matrix using pgs, then user can use previous probability matrix. This process will skip the first workflow, buildTADMap task.
 
 2. Genome : specify the genome version, Current PGS supports only hg19 with chromosome X.
 3. Resolution : Specify the resolution of given input data 

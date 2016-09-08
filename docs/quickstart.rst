@@ -9,6 +9,7 @@ Requirements:
 - Python 2.7
 - Python packages ``numpy``, ``scipy``, ``pandas``, ``h5py``, ``matplotlib`` , ``six``
 - IMP (`Integrative Modeling Package`_.)
+
 .. _Integrative Modeling Package: https://integrativemodeling.org/
 
 Conda package is recommended to install all the requirements. Either `Anaconda <https://www.continuum.io/downloads>`_ or 
@@ -38,3 +39,19 @@ PGS Helper GUI
 
 PGS package includes Graphical User Interface (GUI) based helper program for user to run pgs easily. 
 User can generate command script (i.e. runPgs.sh) and configuration file(i.e. input_config.json) through the PGS Helper.
+
+.. Tip:: PGS Helper uses `Java Runtime Envrionment <http://www.oracle.com/technetwork/java/javase/downloads/index.html>`_, latest 8 update is recommended. 
+
+Run PGS Helper
+--------------
+
+To initialize PGS Helper:
+
+::
+
+    $ java -jar PGSHelper.jar
+
+The following GUI will appear:
+
+.. image:: images/pgs_helper.png
+

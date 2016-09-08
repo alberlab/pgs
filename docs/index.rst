@@ -13,18 +13,15 @@ The whole codes are wrapped in python, and users can simply execute it one time.
 PGS software will run on high performance computing environment (HPC), such as sun grid engine and TORQUE (pbs script), as well as local machine. 
 But, it is highly recommended to run on HPC because of computational resource and running time.
 
-The code is open source, and `available on github`_.
-.. _available on github: https://github.com/alberlab/pgs
+The code is open source, and `available on github <https://github.com/alberlab/pgs>`_.
 
 Contents:
 
 .. toctree::
    :maxdepth: 2
-    quickstart
-    results
-    faq
-    
-    
+   quickstart
+   results
+   faq
     
 
 * :ref:`genindex`

@@ -2,6 +2,7 @@ language: python
 python:
   - "2.7"
 before_install:
+  - ls -l
   - sudo apt-get update
   #setup conda
   - wget https://repo.continuum.io/miniconda/Miniconda-latest-Linux-x86_64.sh -O miniconda.sh;
@@ -17,9 +18,11 @@ before_install:
   # Create test environment and install deps
   - conda create -q -n test-environment python=$TRAVIS_PYTHON_VERSION setuptools pip numpy scipy pandas h5py matplotlib six 
   - source activate test-environment
+  
 install:
   - python setup.py install
 
 script:
-  - bash ./test/runPgs_workflow_test.sh
+  - python ./pgs.py --input_config input_config.json --run_mode local --nCores 200 --memMb 800000 --pyflow_dir workflow_test --dry
+  #- bash ./test/runPgs_workflow_test.sh
 

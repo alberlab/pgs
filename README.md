@@ -120,7 +120,7 @@ Click ``Generate`` button on the bottom.
 
 ### PGS Helper Output
 
-PGSInputGenerator creates input_config.json containing all input data address and parameters and running script (``runPGS.sh``) under the project directory. 
+PGSInputGenerator creates ``input_config.json`` containing all input data address and parameters and running script (``runPGS.sh``) under the project directory. 
 
 A. ``$PROJECT_DIR/input_config.json``
 

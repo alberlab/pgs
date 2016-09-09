@@ -25,4 +25,4 @@ script:
   #- python ./pgs.py --input_config input_config.json --run_mode local --nCores 200 --memMb 800000 --pyflow_dir workflow_test --dry
   - cd ./test/
   - bash runPgs_workflow_test.sh
-  - bash runPgs_probMat_run_test.sh
+  - travis_wait 40 bash runPgs_probMat_run_test.sh

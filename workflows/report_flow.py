@@ -140,7 +140,7 @@ class ReportFlow(WorkflowRunner):
 			'--probMat', probMat]
 		
 		task_label = "report_flow"
-		self.addTask(label=task_label, command=' '.join(args), nCores=1, memMb=100000, retryMax=3, retryWait=2, retryWindow=0, retryMode="all")	
+		self.addTask(label=task_label, command=' '.join(args), nCores=nCores, memMb=memMb, retryMax=3, retryWait=2, retryWindow=0, retryMode="all")	
 		
 if __name__ == "__main__":
 	parser = argparse.ArgumentParser(usage=extend_pyflow_docstring(__doc__))

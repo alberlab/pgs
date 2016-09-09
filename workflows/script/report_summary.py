@@ -30,6 +30,8 @@ import pandas as pd
 import seaborn as sns
 import alab.matrix
 import sys
+import os
+
 sns.set(style="white")
 
 from alab.analysis import structuresummary

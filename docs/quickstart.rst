@@ -119,7 +119,7 @@ F. Command Setup
 2. Core Limit : Specify the limit of number of cores to allow pgs to use based on user’s hpc policy.
 3. Mem Limit : Specify the limit of memory to allow pgs to use based on user’s hpc policy.
 4. Optional Argument List : Specify additional options for each job to run/be assigned correctly on user’s hpc, such as queue name and running time. Note that the option list will be applied to each job.
-   E.g. ``[‘-l’,’replace_your_qname_here’,’-l’,’walltime=333:00:00’]``
+   E.g. ``[‘-l’,’your_qname_here’,’-l’,’walltime=333:00:00’]``
 
 G. Generate Scripts 
 ~~~~~~~~~~~~~~~~~~~
@@ -170,7 +170,7 @@ B. ``$PROJECT_DIR/runPGS.sh``
         --nCores 300 
         --memMb 800000 
         --pyflow_dir $PROJECT_DIR
-        --schedulerArgList  ["-q","[qname]","-l","walltime=100:00:00"]
+        --schedulerArgList  ["-q","qname","-l","walltime=100:00:00"]
 
 RUN PGS
 -------

@@ -10,92 +10,79 @@ Requirements:
 
 - Python 2.7
 - Python packages ``numpy``, ``scipy``, ``pandas``, ``h5py``, ``matplotlib`` , ``six``
-- IMP (`Integrative Modeling Package`_.)
+- IMP ([Integrative Modeling Package](https://integrativemodeling.org/))
 
-.. _Integrative Modeling Package: https://integrativemodeling.org/
+Conda package is recommended to install all the requirements. Either [Anaconda](<https://www.continuum.io/downloads>) or 
+the minimal [Miniconda](http://conda.pydata.org/miniconda.html) are suitable for managing required packages including IMP. If you use Miniconda, then you can install as follows:
 
-Conda package is recommended to install all the requirements. Either `Anaconda <https://www.continuum.io/downloads>`_ or 
-the minimal `Miniconda <http://conda.pydata.org/miniconda.html>`_ are suitable for managing required packages including IMP. If you use Miniconda, then you can install as follows:
-
-::
-
+```bash
     $ conda install numpy scipy pandas h5py matplotlib six
-
+```
 Install IMP using conda:
 
-::
-
+```bash
     $ conda config --add channels salilab
     $ conda install imp
-
+```
 All other dependencies for imp and python packages will be automatically installed.
 
 Then install PGS workflow packages:
 
-::
-
+```bash
     $ python setup.py install
-    
+``` 
 ### PGS Helper GUI
 
 
 PGS package includes Graphical User Interface (GUI) based helper program for user to run pgs easily. 
 User can generate command script (i.e. runPgs.sh) and configuration file(i.e. input_config.json) through the PGS Helper.
 
-.. Tip:: PGS Helper uses `Java Runtime Envrionment <http://www.oracle.com/technetwork/java/javase/downloads/index.html>`_, latest 8 update is recommended. 
 
 ### Run PGS Helper
 
 To initialize PGS Helper:
 
-::
-
+```bash
     $ java -jar PGSHelper.jar
+```
 
 The following GUI will appear:
 
-.. image:: images/pgs_helper.png
-   :height: 1182px
-   :width: 934px
-   :scale: 50 %
-   :align: center
+![PGS Helper] (docs/images/pgs_helper.png)
    
-A. PGS Project – Directory
-~~~~~~~~~~~~~~~~~~~~~~~~~~
+#### A. PGS Project – Directory ####
+
 
 Specify the project directory using the ``Browser`` button on right side. PGS will run in the specified project directory and all files, 
 such as running script(i.e. ``runPGS.sh``), configuration file(i.e. ``input_config.json``),  log(i.e. ``pyflow.data``), and output results, 
 will be stored in the directory.
 
-B. PGS Source – Directory
-~~~~~~~~~~~~~~~~~~~~~~~~~
+#### B. PGS Source – Directory ####
 
 Specify the directory of pgs source code using the ``Browser`` button on right side.
 
-C. Input  
-~~~~~~~~
+#### C. Input ####
 
 1. Input Data
 
   *Option 1 : Raw(txt) + TAD*
   
-     | Raw contact matrix file(txt) : First three columns are chromosome, start position(bp), and end position(bp) and followed by contact matrix. 
-     | TAD_file(bed) : Chromatin Segmentation information or TAD file should be converted into `bed file format <https://genome.ucsc.edu/FAQ/FAQformat.html>`_. 
+  ...Raw contact matrix file(txt) : First three columns are chromosome, start position(bp), and end position(bp) and followed by contact matrix. 
+  ...TAD_file(bed) : Chromatin Segmentation information or TAD file should be converted into [bed file format](https://genome.ucsc.edu/FAQ/FAQformat.html). 
   
   *Option 2 : Prob(txt) + TAD*
   
-     | Probability matrix file(txt)
-     | TAD_file(bed)
+  ...Probability matrix file(txt)
+  ...TAD_file(bed)
      
   *Option 3 : Prob(hdf5)*
   
-     | Probability matrix file(hdf5) : If the user have ever generated probability matrix using pgs, then user can use previous probability matrix. This process will skip the first workflow, buildTADMap task.
+  ...Probability matrix file(hdf5) : If the user have ever generated probability matrix using pgs, then user can use previous probability matrix. This process will skip the first workflow, buildTADMap task.
 
 2. Genome : specify the genome version, Current PGS supports only hg19 with chromosome X.
 3. Resolution : Specify the resolution of given input data 
 
-D. Modeling Parameters
-~~~~~~~~~~~~~~~~~~~~~~
+#### D. Modeling Parameters ####
 
 1. Num of Structures : Specify the number of structures to generate using pgs. ``default = 1,000``
 2. Violation Cutoff : Specify the violation cutoff.
@@ -105,16 +92,15 @@ D. Modeling Parameters
 4. Max Iteration : Specify the number of maximum iterations for each theta.
    ``default = 10``
 
-E. System Parameters
-~~~~~~~~~~~~~~~~~~~~
+#### E. System Parameters ####
 
 1. Default Core : Specify the number of cores to use for default job, such as MStep.
 2. Default MemMB : Specify the number of memory to use for default job, such as MStep. 
 3. Max Core : Specify the number of cores to use for high demand jobs, such as AStep.
 4. Max MemMB : Specify the number of memory to use for high demand jobs, such as AStep. 
 
-F. Command Setup
-~~~~~~~~~~~~~~~~
+#### F. Command Setup ####
+
 
 1. Run Mode : Specify the platform where pgs run on, such as Local, Sun Grid Engine or Torque. 
 2. Core Limit : Specify the limit of number of cores to allow pgs to use based on user’s hpc policy.
@@ -122,8 +108,7 @@ F. Command Setup
 4. Optional Argument List : Specify additional options for each job to run/be assigned correctly on user’s hpc, such as queue name and running time. Note that the option list will be applied to each job.
    e.g. ``[‘-l’,’[qname]’,’-l’,’walltime=100:00:00’]``
 
-G. Generate Scripts 
-~~~~~~~~~~~~~~~~~~~
+#### G. Generate Scripts ####
 
 Click ``Generate`` button on the bottom.
 
@@ -131,12 +116,11 @@ Click ``Generate`` button on the bottom.
 
 ### PGS Helper Output
 
-PGSInputGenerator creates input_config.json containing all input data address and parameters and running script (``runPGS.sh``) under the project directory. 
+PGSInputGenerator creates ``input_config.json`` containing all input data address and parameters and running script (``runPGS.sh``) under the project directory. 
 
 A. ``$PROJECT_DIR/input_config.json``
 
-::
-
+```json
     {   "source_dir" : "[Directory name where pgs socurce is]",
         "input" : {
         "raw_matrix_file " : "[raw matrix file]",
@@ -159,11 +143,11 @@ A. ``$PROJECT_DIR/input_config.json``
             "default_memMB" : [Default size of mem(MB)] e.g. 1500
         }
     }
+```
 
 B. ``$PROJECT_DIR/runPGS.sh``
 
-::
-
+```json
     python $PGS_DIRECTORY/pgs.py 
         --input_config $PROJECT_DIR/input_config.json 
         --run_mode [running platform] 
@@ -171,12 +155,11 @@ B. ``$PROJECT_DIR/runPGS.sh``
         --memMb 800000 
         --pyflow_dir $PROJECT_DIR
         --schedulerArgList  ["-q","[qname]","-l","walltime=100:00:00"]
-
+```
 ### RUN PGS
 
 User can run pgs package through the following command.
 
-::
-
+```
     $ PROJECT_DIR> sh runPgs.sh
-    
+``` 

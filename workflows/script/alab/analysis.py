@@ -78,6 +78,9 @@ class structuresummary(object):
         else:
             raise RuntimeError, "Invalid filename or file directory!"
         #-
+        while nstruct%pid != 0:
+            pid = int(pid/2)
+        
         return None
     #==============================reading
     def _readStructures(self,target,pid,silence=True):

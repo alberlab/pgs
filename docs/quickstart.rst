@@ -119,7 +119,7 @@ F. Command Setup
 2. Core Limit : Specify the limit of number of cores to allow pgs to use based on user’s hpc policy.
 3. Mem Limit : Specify the limit of memory to allow pgs to use based on user’s hpc policy.
 4. Optional Argument List : Specify additional options for each job to run/be assigned correctly on user’s hpc, such as queue name and running time. Note that the option list will be applied to each job.
-   e.g. ``[‘-l’,’quename’,’-l’,’walltime=333:00:00’]``
+   For example: ``[‘-l’,’replace_your_qname_here’,’-l’,’walltime=333:00:00’]``
 
 G. Generate Scripts 
 ~~~~~~~~~~~~~~~~~~~

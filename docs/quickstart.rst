@@ -76,12 +76,6 @@ C. Input
 
 1. Input Data
 
-.. image:: images/pgs_helper.png
-   :height: 1182px
-   :width: 934px
-   :scale: 50 %
-   :align: center
-
   *Option 1 : Raw(txt) + TAD*
   
      | Raw contact matrix file (txt) : First three columns are chromosome, start position(bp), and end position(bp) and followed by contact matrix. 
@@ -89,55 +83,59 @@ C. Input
   
   *Option 2 : Prob(txt) + TAD*
   
-     | Probability matrix file(txt)
+     | Probability matrix file (txt)
      | TAD_file (bed)
      
   *Option 3 : Prob(hdf5)*
   
      | Probability matrix file (hdf5) : If the user have ever generated probability matrix using pgs, then user can use previous probability matrix. This process will skip the first workflow, buildTADMap task.
 
-2. Genome : specify the genome version, Current PGS supports only hg19 with chromosome X.
-3. Resolution : Specify the resolution of given input data 
+2. Genome : specify the genome version (current PGS supports only hg19 with chromosomes 1-22 and X).
+3. Resolution : specify the resolution of given input data (in bp).
 
 D. Modeling Parameters
 ~~~~~~~~~~~~~~~~~~~~~~
 
-1. Num of Structures : Specify the number of structures to generate using pgs. ``default = 1,000``
-2. Violation Cutoff : Specify the violation cutoff.
+1. Num of structures : specify the number of structures to generate using pgs. ``default = 1,000``
+2. Violation cutoff : specify the violation cutoff.
    ``default = 0.05``
-3. Theta Steps : Specify the list of thetas, 1 < theta < 0.
+3. Theta steps : specify the list of thetas, 1 < theta < 0.
    ``default = 1, 0.2, 0.1, 0.05, 0.02, 0.01``
-4. Max Iteration : Specify the number of maximum iterations for each theta.
+4. Max iteration : specify the number of maximum iterations for each theta.
    ``default = 10``
 
 E. System Parameters
 ~~~~~~~~~~~~~~~~~~~~
-
-1. Default Core : Specify the number of cores to use for default job, such as MStep.
-2. Default MemMB : Specify the number of memory to use for default job, such as MStep. 
-3. Max Core : Specify the number of cores to use for high demand jobs, such as AStep.
-4. Max MemMB : Specify the number of memory to use for high demand jobs, such as AStep. 
+In order to proceed efficiently, PGS submits both single-core and multi-thread jobs on HPC clusters (e.g. for the M-step and A-step jobs, respectively).
+Thus the following parameters need to be specified.
+1. Default core : the number of cores to use for each regular job.
+2. Default MemMB : the memory (Mb) to use for each regular job. 
+3. Max cores : the number of cores to use for each multi-thread job.
+4. Max MemMB : the total memory (Mb) to use for each multi-thread job. 
 
 F. Command Setup
 ~~~~~~~~~~~~~~~~
 
-1. Run Mode : Specify the platform where pgs run on, such as Local, Sun Grid Engine or Torque. 
-2. Core Limit : Specify the limit of number of cores to allow pgs to use based on user’s hpc policy.
-3. Mem Limit : Specify the limit of memory to allow pgs to use based on user’s hpc policy.
-4. Optional Argument List : Specify additional options for each job to run/be assigned correctly on user’s hpc, such as queue name and running time. Note that the option list will be applied to each job.
+1. Run mode : the platform where pgs run on, such as Local, Sun Grid Engine or Torque. 
+2. Core limit : the maximum number of cores for PGS to use (limited to user’s quota).
+3. Mem limit : the limit of memory for PGS to use.
+4. Optional argument list : additional options for each job to run/be assigned properly on the user’s hpc, such as queue name, running time, etc. Note that the option list will be applied to each job.
    E.g. ``[‘-l’,’your_qname_here’,’-l’,’walltime=333:00:00’]``
 
 G. Generate Scripts 
 ~~~~~~~~~~~~~~~~~~~
 
-Click ``Generate`` button on the bottom.
+Click the ``Generate`` button on the bottom to write a file (input_config.json) with the parameters on the working directory which has been specified by the user.
+There will be a confirmation window with ``Yes`` or ``No`` button, and at this point the user can see a simple instruction in the ``Usage`` box. If ``Yes`` is clicked, then the GUI will be closed.
 
 
 
 PGS Helper Output
 -----------------
 
-PGSInputGenerator creates input_config.json containing all input data address and parameters and running script (``runPGS.sh``) under the project directory. 
+PGSInputGenerator creates ``input_config.json`` containing all necessary information, and an execution script (``runPGS.sh``) under the project directory. 
+At this point, the user tjust need to execute 
+
 
 A. ``$PROJECT_DIR/input_config.json``
 

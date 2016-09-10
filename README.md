@@ -9,7 +9,7 @@
 Requirements:
 
 - Python 2.7
-- Python packages ``numpy``, ``scipy``, ``pandas``, ``h5py``, ``matplotlib`` , ``six``
+- Python packages ``numpy``, ``scipy``, ``pandas``, ``h5py``, ``matplotlib`` , ``seaborn``
 - IMP ([Integrative Modeling Package](https://integrativemodeling.org/))
 
 Conda package is recommended to install all the requirements. Either [Anaconda](<https://www.continuum.io/downloads>) or 

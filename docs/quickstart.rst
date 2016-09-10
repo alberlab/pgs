@@ -62,19 +62,25 @@ The following GUI will appear:
 A. PGS Project – Directory
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Specify the project directory using the ``Browser`` button on right side. PGS will run in the specified project directory and all files, 
+Specify the project directory using the ``Browse`` button on right side. PGS will run in the specified project directory and all files, 
 such as running script(i.e. ``runPGS.sh``), configuration file(i.e. ``input_config.json``),  log(i.e. ``pyflow.data``), and output results, 
 will be stored in the directory.
 
 B. PGS Source – Directory
 ~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Specify the directory of pgs source code using the ``Browser`` button on right side.
+Specify the directory of pgs source code using the ``Browse`` button on right side.
 
 C. Input  
 ~~~~~~~~
 
 1. Input Data
+
+.. image:: images/pgs_helper.png
+   :height: 1182px
+   :width: 934px
+   :scale: 50 %
+   :align: center
 
   *Option 1 : Raw(txt) + TAD*
   

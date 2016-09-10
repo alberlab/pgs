@@ -79,7 +79,7 @@ C. Input
   *Option 1 : Raw(txt) + TAD*
   
      | Raw contact matrix file (txt) : First three columns are chromosome, start position(bp), and end position(bp) and followed by contact matrix. 
-     | TAD_file (bed) : Chromatin Segmentation information or TAD file should be converted into `bed file format <https://genome.ucsc.edu/FAQ/FAQformat.html>`. 
+     | TAD_file (bed) : Chromatin Segmentation information or TAD file should be converted into `bed file format <https://genome.ucsc.edu/FAQ/FAQformat.html>`_. 
   
   *Option 2 : Prob(txt) + TAD*
   

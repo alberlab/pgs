@@ -8,5 +8,5 @@ setup(
 	url = '', 
 	description = '3D Modeling Pipeline Workflows',
 	packages=['alab'],
-	pckage_data={'alab' : ['genomes/*']}
+	package_data={'alab' : ['genomes/*']}
 	)

@@ -40,9 +40,10 @@ PGS Helper GUI
 PGS package includes Graphical User Interface (GUI) based helper program for user to run pgs easily. 
 User can generate command script (i.e. runPgs.sh) and configuration file(i.e. input_config.json) through the PGS Helper.
 
-.. Tip:: PGS Helper uses `Java Runtime Envrionment <http://www.oracle.com/technetwork/java/javase/downloads/index.html>`_, latest 8 update is recommended. 
+.. Tip:: PGS Helper uses `Java Runtime Envrionment <http://www.oracle.com/technetwork/java/javase/downloads/index.html>`_, the latest Java SE 8 update is recommended. 
 
-Run PGS Helper
+
+Using the PGS Helper
 --------------
 
 To initialize PGS Helper:
@@ -59,10 +60,11 @@ The following GUI will appear:
    :scale: 50 %
    :align: center
    
+
 A. PGS Project – Directory
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Specify the project directory using the ``Browse`` button on right side. PGS will run in the specified project directory and all files, 
+Specify the project/working directory using the ``Browse`` button on right side. PGS will run in the specified project directory and all files, 
 such as running script(i.e. ``runPGS.sh``), configuration file(i.e. ``input_config.json``),  log(i.e. ``pyflow.data``), and output results, 
 will be stored in the directory.
 
@@ -70,6 +72,7 @@ B. PGS Source – Directory
 ~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Specify the directory of pgs source code using the ``Browse`` button on right side.
+
 
 C. Input  
 ~~~~~~~~

@@ -62,7 +62,7 @@ The following GUI will appear:
    :align: center
    
 
-A. PGS Project – Directory
+A. Working Directory
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Specify the project/working directory using the ``Browse`` button on right side. PGS will run in the specified project directory and all files, 
@@ -72,7 +72,7 @@ will be stored in the directory.
 B. PGS Source – Directory
 ~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Specify the directory of pgs source code using the ``Browse`` button on right side.
+Specify the directory of PGS source code using the ``Browse`` button on right side.
 
 
 C. Input  
@@ -82,17 +82,17 @@ C. Input
 
 - Experiment data
 
-  *Option 1 : Raw(txt) + TAD*
+  *Option 1 : Raw + TAD*
   
      * Raw contact matrix file (txt); the first three columns contain chromosome, start position (bp), and end position (bp) and followed by contact matrix (all numeric values must be **integers**; see figure above).
      * TAD_file (bed); a 4-column chromatin segmentation or TAD file, we adopt `bed file format <https://genome.ucsc.edu/FAQ/FAQformat.html>`_ while the 4-th column must contain "domain", "CEN", and "gap" (see figure above). 
   
-  *Option 2 : Prob(txt) + TAD*
+  *Option 2 : TAD-TAD Prob(txt) + TAD*
   
      * Probability matrix file (txt); adopts the same format as the raw contact matrix file above, but the matrix contains probability values from 0 to 1.
      * TAD_file (bed); the format as figure above.
      
-  *Option 3 : Prob(hdf5)*
+  *Option 3 : TAD-TAD Prob(hdf5)*
   
      * Probability matrix file (hdf5) : if a user have generated probability matrix using PGS (i.e. under old ``$PROJECT_DIR/result/probMat/probMat.hdf5.hmat``), then the user can use the previous probability matrix. This process will skip the first workflow, buildTADMap task. This option is good for replica calculations (in a new working directory, of course).
 
@@ -104,7 +104,7 @@ D. Modeling Parameters
 
 - Num of structures : the number of structures to generate. ``default = 1,000``
 - Violation cutoff : violation cutoff. ``default = 0.05``
-- Theta steps : a list of thetas, 1 < theta < 0. ``default = 1, 0.2, 0.1, 0.05, 0.02, 0.01``
+- Theta list : a probability list for step-wise optimizations; 1 < theta < 0. ``default = 1, 0.2, 0.1, 0.05, 0.02, 0.01``
 - Max iteration : the number of maximum iterations for each theta. ``default = 10``
 
 E. System Parameters
@@ -119,7 +119,7 @@ Thus the following parameters need to be specified.
 F. Command Setup
 ~~~~~~~~~~~~~~~~
 
-- Run mode : the platform where pgs run on, such as Local, Sun Grid Engine or Torque. 
+- Run mode : select a platform such as local computer, Sun Grid Engine (SGE) or Torque. 
 - Core limit : the maximum number of cores for PGS to use (limited to user’s quota).
 - Mem limit : the limit of memory for PGS to use.
 - Optional argument list : additional options for each job to run/be assigned properly on the user’s hpc, such as queue name, running time, etc. Note that the option list will be applied to each job.

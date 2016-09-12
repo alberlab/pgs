@@ -31,15 +31,19 @@ import os.path
 import json
 from subprocess import call
 
-from pyflow_alab.pyflow import WorkflowRunner
+from alab.pyflow import WorkflowRunner
+from alab.args import add_pyflow_args
+from alab.args import default_pyflow_args
+from alab.args import extend_pyflow_docstring
+
 #from workflows.define_domain import DefineDomainFlow
 from workflows.build_TAD_map_flow import BuildTADMapFlow
 from workflows.modeling_structure_flow import ModelingStructureFlow
 from workflows.report_flow import ReportFlow
 
-from workflows.utils.args import add_pyflow_args
-from workflows.utils.args import default_pyflow_args
-from workflows.utils.args import extend_pyflow_docstring
+#import workflows.build_TAD_map_flow.BuildTADMapFlow
+#import workflows.modeling_structure_flow.ModelingStructureFlow
+#import workflows.report_flow.ReportFlow
 #from workflows.utils import ensure_file_exists
 
 __version__ = "0.0.1"

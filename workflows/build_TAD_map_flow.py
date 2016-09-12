@@ -40,10 +40,10 @@ import os
 import json
 from subprocess import Popen, PIPE
 
-from pyflow_alab.pyflow import WorkflowRunner
-from workflows.utils.args import add_pyflow_args
-from workflows.utils.args import default_pyflow_args
-from workflows.utils.args import extend_pyflow_docstring
+from alab.pyflow import WorkflowRunner
+from alab.args import add_pyflow_args
+from alab.args import default_pyflow_args
+from alab.args import extend_pyflow_docstring
 
 #from workflows.utils.sys_utils import ensure_file_exists
 #from workflows.config import SiteConfig

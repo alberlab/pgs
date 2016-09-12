@@ -1,11 +1,12 @@
 from distutils.core import setup
 
 setup(
-	name = 'workflows', 
+	name = 'pgs', 
 	version = '0.0.1', 
 	author = 'Hanjun Shin', 
 	author_email = 'shanjun@usc.edu', 
 	url = '', 
 	description = '3D Modeling Pipeline Workflows',
-	packages=['pyflow_alab', 'workflows', 'workflows.utils', 'workflows.modeling']
+	packages=['alab', 'workflows', 'workflows.modeling'],
+	package_data={'alab' : ['genomes/*']}
 	)

@@ -12,11 +12,10 @@ before_install:
   - conda config --set always_yes yes --set changeps1 no
   - conda update -q conda
   - conda config --add channels salilab
-  - conda install imp
   # Useful for debugging any issues with conda
   - conda info -a      
   # Create test environment and install deps
-  - conda create -q -n test-environment python=$TRAVIS_PYTHON_VERSION setuptools pip numpy scipy pandas h5py matplotlib six 
+  - conda create -q -n test-environment python=$TRAVIS_PYTHON_VERSION setuptools pip numpy scipy h5py pandas matplotlib seaborn imp
   - source activate test-environment
   
 install:
@@ -26,4 +25,4 @@ script:
   #- python ./pgs.py --input_config input_config.json --run_mode local --nCores 200 --memMb 800000 --pyflow_dir workflow_test --dry
   - cd ./test/
   - bash runPgs_workflow_test.sh
-
+  - travis_wait 40 bash runPgs_probMat_run_test.sh

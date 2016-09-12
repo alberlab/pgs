@@ -7,7 +7,7 @@ Installation
 Requirements:
 
 - Python 2.7
-- Python packages ``numpy``, ``scipy``, ``pandas``, ``h5py``, ``matplotlib`` , ``six``
+- Python packages ``numpy``, ``scipy``, ``pandas``, ``h5py``, ``matplotlib`` , ``seaborn``
 - IMP (`Integrative Modeling Package`_.)
 
 .. _Integrative Modeling Package: https://integrativemodeling.org/
@@ -17,7 +17,7 @@ the minimal `Miniconda <http://conda.pydata.org/miniconda.html>`_ are suitable f
 
 ::
 
-    $ conda install numpy scipy pandas h5py matplotlib six
+    $ conda install numpy scipy pandas h5py matplotlib seaborn
 
 Install IMP using conda:
 
@@ -37,12 +37,14 @@ Then install PGS workflow packages:
 PGS Helper GUI
 --------------
 
-PGS package includes Graphical User Interface (GUI) based helper program for user to run pgs easily. 
-User can generate command script (i.e. runPgs.sh) and configuration file(i.e. input_config.json) through the PGS Helper.
+PGS package includes a Graphical User Interface (GUI) based helper program for user to run PGS easily. 
+With this, a user can generate a command script ``runPgs.sh`` and a configuration file ``input_config.json``.
 
-.. Tip:: PGS Helper uses `Java Runtime Envrionment <http://www.oracle.com/technetwork/java/javase/downloads/index.html>`_, latest 8 update is recommended. 
+.. tip:: PGS Helper uses `Java Runtime Envrionment <http://www.oracle.com/technetwork/java/javase/downloads/index.html>`_, the latest Java SE 8 update is recommended. 
 
-Run PGS Helper
+
+
+Using the PGS Helper
 --------------
 
 To initialize PGS Helper:
@@ -59,108 +61,113 @@ The following GUI will appear:
    :scale: 50 %
    :align: center
    
+
 A. PGS Project – Directory
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Specify the project directory using the ``Browser`` button on right side. PGS will run in the specified project directory and all files, 
+Specify the project/working directory using the ``Browse`` button on right side. PGS will run in the specified project directory and all files, 
 such as running script(i.e. ``runPGS.sh``), configuration file(i.e. ``input_config.json``),  log(i.e. ``pyflow.data``), and output results, 
 will be stored in the directory.
 
 B. PGS Source – Directory
 ~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Specify the directory of pgs source code using the ``Browser`` button on right side.
+Specify the directory of pgs source code using the ``Browse`` button on right side.
+
 
 C. Input  
 ~~~~~~~~
 
-1. Input Data
+.. image:: images/fileFormat.png
+
+- Experiment data
 
   *Option 1 : Raw(txt) + TAD*
   
-     | Raw contact matrix file(txt) : First three columns are chromosome, start position(bp), and end position(bp) and followed by contact matrix. 
-     | TAD_file(bed) : Chromatin Segmentation information or TAD file should be converted into `bed file format <https://genome.ucsc.edu/FAQ/FAQformat.html>`_. 
+     * Raw contact matrix file (txt); the first three columns contain chromosome, start position (bp), and end position (bp) and followed by contact matrix (all numeric values must be **integers**; see figure above).
+     * TAD_file (bed); a 4-column chromatin segmentation or TAD file, we adopt `bed file format <https://genome.ucsc.edu/FAQ/FAQformat.html>`_ while the 4-th column must contain "domain", "CEN", and "gap" (see figure above). 
   
   *Option 2 : Prob(txt) + TAD*
   
-     | Probability matrix file(txt)
-     | TAD_file(bed)
+     * Probability matrix file (txt); adopts the same format as the raw contact matrix file above, but the matrix contains probability values from 0 to 1.
+     * TAD_file (bed); the format as figure above.
      
   *Option 3 : Prob(hdf5)*
   
-     | Probability matrix file(hdf5) : If the user have ever generated probability matrix using pgs, then user can use previous probability matrix. This process will skip the first workflow, buildTADMap task.
+     * Probability matrix file (hdf5) : if a user have generated probability matrix using PGS (i.e. under old ``$PROJECT_DIR/result/probMat/probMat.hdf5.hmat``), then the user can use the previous probability matrix. This process will skip the first workflow, buildTADMap task. This option is good for replica calculations (in a new working directory, of course).
 
-2. Genome : specify the genome version, Current PGS supports only hg19 with chromosome X.
-3. Resolution : Specify the resolution of given input data 
+- Genome : the genome version of 3D models being constructed (current PGS supports only hg19 with chromosomes 1-22 and X).
+- Resolution : the resolution of raw input data (in bp).
 
 D. Modeling Parameters
 ~~~~~~~~~~~~~~~~~~~~~~
 
-1. Num of Structures : Specify the number of structures to generate using pgs. ``default = 1,000``
-2. Violation Cutoff : Specify the violation cutoff.
-   ``default = 0.05``
-3. Theta Steps : Specify the list of thetas, 1 < theta < 0.
-   ``default = 1, 0.2, 0.1, 0.05, 0.02, 0.01``
-4. Max Iteration : Specify the number of maximum iterations for each theta.
-   ``default = 10``
+- Num of structures : the number of structures to generate. ``default = 1,000``
+- Violation cutoff : violation cutoff. ``default = 0.05``
+- Theta steps : a list of thetas, 1 < theta < 0. ``default = 1, 0.2, 0.1, 0.05, 0.02, 0.01``
+- Max iteration : the number of maximum iterations for each theta. ``default = 10``
 
 E. System Parameters
 ~~~~~~~~~~~~~~~~~~~~
-
-1. Default Core : Specify the number of cores to use for default job, such as MStep.
-2. Default MemMB : Specify the number of memory to use for default job, such as MStep. 
-3. Max Core : Specify the number of cores to use for high demand jobs, such as AStep.
-4. Max MemMB : Specify the number of memory to use for high demand jobs, such as AStep. 
+In order to proceed efficiently, PGS submits both single-core and multi-thread jobs on HPC clusters (e.g. for the M-step and A-step jobs, respectively).
+Thus the following parameters need to be specified.
+- Default core : the number of cores to use for each regular job.
+- Default MemMB : the memory (Mb) to use for each regular job. 
+- Max cores : the number of cores to use for each multi-thread job.
+- Max MemMB : the total memory (Mb) to use for each multi-thread job. 
 
 F. Command Setup
 ~~~~~~~~~~~~~~~~
 
-1. Run Mode : Specify the platform where pgs run on, such as Local, Sun Grid Engine or Torque. 
-2. Core Limit : Specify the limit of number of cores to allow pgs to use based on user’s hpc policy.
-3. Mem Limit : Specify the limit of memory to allow pgs to use based on user’s hpc policy.
-4. Optional Argument List : Specify additional options for each job to run/be assigned correctly on user’s hpc, such as queue name and running time. Note that the option list will be applied to each job.
+- Run mode : the platform where pgs run on, such as Local, Sun Grid Engine or Torque. 
+- Core limit : the maximum number of cores for PGS to use (limited to user’s quota).
+- Mem limit : the limit of memory for PGS to use.
+- Optional argument list : additional options for each job to run/be assigned properly on the user’s hpc, such as queue name, running time, etc. Note that the option list will be applied to each job.
    E.g. ``[‘-l’,’your_qname_here’,’-l’,’walltime=333:00:00’]``
 
 G. Generate Scripts 
 ~~~~~~~~~~~~~~~~~~~
 
-Click ``Generate`` button on the bottom.
+Click the ``Generate`` button on the bottom to write a file (input_config.json) with the parameters on the working directory which has been specified by the user.
+There will be a confirmation window with ``Yes`` or ``No`` button, and at this point the user can see a simple instruction in the ``Usage`` box. If ``Yes`` is clicked, then the GUI will be closed.
 
 
 
 PGS Helper Output
 -----------------
 
-PGSInputGenerator creates input_config.json containing all input data address and parameters and running script (``runPGS.sh``) under the project directory. 
+PGSInputGenerator creates ``input_config.json`` containing all necessary information, and an execution script (``runPGS.sh``) under the project directory. 
+The following describes the contents of those 2 files.
 
-A. ``$PROJECT_DIR/input_config.json``
+1. ``$PROJECT_DIR/input_config.json``
 
 ::
 
-    {   "source_dir" : "[Directory name where pgs socurce is]",
+    {   "source_dir" : "[Directory name where pgs source is]",
         "input" : {
         "raw_matrix_file " : "[raw matrix file]",
-            "TAD_file" : "[ TAD file, .bed format]"
-            "resolution" : "[Resolution of input contact_map_file] e,g. 100000"
-            "genome" : "[Genome version], e.g. hg19"
+            "TAD_file" : "[ TAD file, .bed format]",
+            "resolution" : "[Resolution of input contact_map_file, e.g. 100000]",
+            "genome" : "[Genome version, e.g. hg19]"
         },
-        "output_dir" : "[Output Directory to store the results], e.g. $PROJECT_DIR/result",
+        "output_dir" : "[Output Directory to store the results, e.g. $PROJECT_DIR/result]",
         
         "modeling_parameters" : {
             "theta_list" : [Theta list] e.g, ["1", "0.2", "0.1","0.05","0.02","0.01"],
-            "num_of_structures" : [Number of structure to generate] e.g. 1000,
-            "max_iter_per_theta" : [Max Iterations per job] e.g. 10,
-            "violation_cutoff" : [Violation Cutoff ] e.g. 0.05
+            "num_of_structures" : [Number of structure to generate, e.g. 1000],
+            "max_iter_per_theta" : [Max Iterations per job, e.g. 10],
+            "violation_cutoff" : [Violation Cutoff, e.g. 0.05]
         },
         "system" : {
-            "max_core" : [Maximum number of cores in a single node], e.g. 8,
-            "max_memMB" : [Maximum size of mem(MB) in a single node] e.g. 64000,
-            "default_core" : [Default number of cores], e.g. 1,
-            "default_memMB" : [Default size of mem(MB)] e.g. 1500
+            "max_core" : [Maximum number of cores in a single node],
+            "max_memMB" : [Maximum size of mem(MB) in a single node],
+            "default_core" : [Default number of cores],
+            "default_memMB" : [Default size of mem(MB)]
         }
     }
 
-B. ``$PROJECT_DIR/runPGS.sh``
+
+2. ``$PROJECT_DIR/runPGS.sh``
 
 ::
 
@@ -172,12 +179,13 @@ B. ``$PROJECT_DIR/runPGS.sh``
         --pyflow_dir $PROJECT_DIR
         --schedulerArgList  ["-q","qname","-l","walltime=100:00:00"]
 
+
 RUN PGS
 -------
 
-User can run pgs package through the following command.
+User can execute PGS under the project/working directory with the following command.
 
 ::
 
-    $ PROJECT_DIR> sh runPgs.sh
+     $ sh runPgs.sh
     

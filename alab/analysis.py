@@ -60,6 +60,8 @@ class structuresummary(object):
             self.nstruct = nstruct
             self.radius  = firststr[-1].r
             print("reading %d structures info in %s,%s"%(nstruct,target,usegrp))
+            while nstruct%pid != 0:
+                pid = int(pid/2)
             self._readStructures(target,pid,**kwargs)
         elif os.path.isfile(target) and os.path.splitext(target)[1] == '.hss':
             h5f = h5py.File(target,'r')

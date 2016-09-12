@@ -9,14 +9,14 @@
 Requirements:
 
 - Python 2.7
-- Python packages ``numpy``, ``scipy``, ``pandas``, ``h5py``, ``matplotlib`` , ``six``
+- Python packages ``numpy``, ``scipy``, ``pandas``, ``h5py``, ``matplotlib`` , ``seaborn``
 - IMP ([Integrative Modeling Package](https://integrativemodeling.org/))
 
 Conda package is recommended to install all the requirements. Either [Anaconda](<https://www.continuum.io/downloads>) or 
 the minimal [Miniconda](http://conda.pydata.org/miniconda.html) are suitable for managing required packages including IMP. If you use Miniconda, then you can install as follows:
 
 ```bash
-    $ conda install numpy scipy pandas h5py matplotlib six
+    $ conda install numpy scipy pandas h5py matplotlib seaborn
 ```
 Install IMP using conda:
 

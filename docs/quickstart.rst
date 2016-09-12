@@ -37,10 +37,11 @@ Then install PGS workflow packages:
 PGS Helper GUI
 --------------
 
-PGS package includes Graphical User Interface (GUI) based helper program for user to run pgs easily. 
-User can generate command script (i.e. runPgs.sh) and configuration file(i.e. input_config.json) through the PGS Helper.
+PGS package includes a Graphical User Interface (GUI) based helper program for user to run PGS easily. 
+With this, a user can generate a command script (i.e. runPgs.sh) and a configuration file (i.e. input_config.json).
 
-.. Tip:: PGS Helper uses `Java Runtime Envrionment <http://www.oracle.com/technetwork/java/javase/downloads/index.html>`_, the latest Java SE 8 update is recommended. 
+.. tip:: PGS Helper uses `Java Runtime Envrionment <http://www.oracle.com/technetwork/java/javase/downloads/index.html>`_, the latest Java SE 8 update is recommended. 
+
 
 
 Using the PGS Helper

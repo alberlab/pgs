@@ -38,7 +38,7 @@ PGS Helper GUI
 --------------
 
 PGS package includes a Graphical User Interface (GUI) based helper program for user to run PGS easily. 
-With this, a user can generate a command script (i.e. runPgs.sh) and a configuration file (i.e. input_config.json).
+With this, a user can generate a command script ``runPgs.sh`` and a configuration file ``input_config.json``.
 
 .. tip:: PGS Helper uses `Java Runtime Envrionment <http://www.oracle.com/technetwork/java/javase/downloads/index.html>`_, the latest Java SE 8 update is recommended. 
 
@@ -94,7 +94,7 @@ C. Input
      
   *Option 3 : Prob(hdf5)*
   
-     * Probability matrix file (hdf5) : if a user have generated probability matrix using PGS (i.e. under result/probMat/probMat.hdf5.hmat), then the user can use previous probability matrix. This process will skip the first workflow, buildTADMap task. This option is good for replica calculations (in a new working directory, of course).
+     * Probability matrix file (hdf5) : if a user have generated probability matrix using PGS (i.e. under old ``$PROJECT_DIR/result/probMat/probMat.hdf5.hmat``), then the user can use the previous probability matrix. This process will skip the first workflow, buildTADMap task. This option is good for replica calculations (in a new working directory, of course).
 
 - Genome : the genome version of 3D models being constructed (current PGS supports only hg19 with chromosomes 1-22 and X).
 - Resolution : the resolution of raw input data (in bp).

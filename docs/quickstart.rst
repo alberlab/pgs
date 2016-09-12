@@ -74,6 +74,8 @@ Specify the directory of pgs source code using the ``Browse`` button on right si
 C. Input  
 ~~~~~~~~
 
+The following GUI will appear:
+
 1. Input Data
 
   *Option 1 : Raw(txt) + TAD*
@@ -179,9 +181,9 @@ B. ``$PROJECT_DIR/runPGS.sh``
 RUN PGS
 -------
 
-User can run pgs package through the following command.
+User can run PGS under the project or working directory with the following command.
 
 ::
 
-    $ PROJECT_DIR> sh runPgs.sh
+     sh runPgs.sh
     

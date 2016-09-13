@@ -67,7 +67,7 @@ hmsfile = sys.argv[1]
 problvl = sys.argv[2]
 outfile = sys.argv[3]
 
-hms = alab.modelstructures(hmsfile, problvl)
+hms = alab.modelstructures(hmsfile, [problvl])
 
 pdb = convertPDB(hms[0].xyz,hms[0].r,hms[0].idx)
 pdbfile = open(outfile,'w')

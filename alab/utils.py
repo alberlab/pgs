@@ -234,3 +234,49 @@ def intersectMatrixIndex(idx,chrom,querystart,querystop):
     else:
         return np.array(intersectList) + rstart
     
+def convertPDB(xyz,r,idx):
+    """
+    Given xyz r and index list, convert to pdb format string file content
+    
+    Parameter
+    ---------
+    xyz : numpy n*3 array, coordinates
+    r : numpy n*1 array, radius
+    idx : index structure array in alab.matrix.idx
+    
+    Return
+    ------
+    Converted pdb text string for future usage
+    """
+    assert len(idx)*2 == len(r)
+    assert len(r) == len(xyz)
+    #Locate centromere bead
+    cenbead = np.flatnonzero(idx['flag']=='CEN')
+    #output
+    pdbtext = ""
+    offset = -len(idx)
+    for copy in ['A','B']:
+        offset += len(idx)
+        chrNum  = 0
+        chrStart= 0
+        for i in range(len(idx)):
+            chrom = idx[i]['chrom']
+            if chrom != idx[cenbead[chrNum]]['chrom']:
+                chrNum += 1
+                chrStart = i
+            if i == cenbead[chrNum]:
+                arm = "CEN"
+            elif i < cenbead[chrNum]:
+                arm = "PAM"
+            else:
+                arm = "QAM"
+            
+            chrchain = chr(chrNum+97) #convert to lowercase letters
+            
+            (x,y,z) = xyz[i+offset]
+            line="ATOM %6d  %s %-3s %s %3d    %7.1f %7.1f %7.1f %5.0f\n"%(i+1,arm,copy+chrom.lstrip('chr'),chrchain,i-chrStart+1,x,y,z,r[i+offset])
+            
+            pdbtext += line
+        #=
+    #==
+    return pdbtext

@@ -49,12 +49,16 @@ class tadmodel(object):
     
     Parameters
     ----------
-    probfile : alab.matrix.contactmatrix instant, probability matrix at TAD level, alab.matrix.contactmatrix hdf5 format is required
-    nucleusRadius : float, radius of nucleus, default 5000(nm)
-    contactRange : int, folds for surface-surface contact coefficient
+    
+    probfile : alab.matrix.contactmatrix instant
+        probability matrix at TAD level, alab.matrix.contactmatrix hdf5 format is required
+    nucleusRadius : float
+        radius of nucleus, default 5000(nm)
+    contactRange : int
+        folds for surface-surface contact coefficient
     level : loglevel, 
-            default:None will record everything during caculation
-            debug, info, warning, error, critical are supported
+        default:None will record everything during caculation
+        debug, info, warning, error, critical are supported
     """
     def __init__(self,probfile,nucleusRadius=5000.0,contactRange=1,level=None):
         self.probmat = alabmatrix.contactmatrix(probfile)
@@ -185,10 +189,12 @@ class tadmodel(object):
     #=========================chromosome territory functions
     def CondenseChromosome(self,rrange=0.5):
         """
-            Collapse chains around centromere beads
-            parameters:
-            -----------
-            rrange:    scale parameter in [0,1] for the radius limit
+        Collapse chains around centromere beads
+        
+        Parameters
+        ----------
+        rrange : float
+            scale parameter in [0,1] for the radius limit
         """
         i = -1
         for chrom in self.genome.info['chrom']:
@@ -225,13 +231,23 @@ class tadmodel(object):
     #=============================restraint set functions
     def _get_beadDistanceRestraint(self,bead1,bead2,dist,kspring=1):
         """
-            get distance upper bound restraint to bead1 and bead2
-            Return restraint 
-            Parameters:
-            -----------
-            bead1,bead2:bead id
-            dist:       distance upper bound
-            kspring:    harmonic constant k
+        get distance upper bound restraint to bead1 and bead2
+        
+        
+        Parameters
+        -----------
+        
+        bead1,bead2 : int 
+            bead id
+        dist : int
+            distance upper bound
+        kspring : int
+            harmonic constant k
+        
+        Return
+        ------
+        
+        restraint 
         """
         restraintName = "Bead (%d,%d) : %f k = %.1f" % (bead1,bead2,dist,kspring)
         ds = IMP.core.SphereDistancePairScore(IMP.core.HarmonicUpperBound(dist,kspring))
@@ -240,10 +256,11 @@ class tadmodel(object):
     
     def _get_consecutiveBeadRestraints(self,lowprob=0.1,kspring=10):
         """
-            calculate distance constraints to consecutive beads
-            Parameters:
-            -----------
-            lowprob:    Min probility for consecutive beads
+        calculate distance constraints to consecutive beads
+        
+        Parameters
+        -----------
+        lowprob : Min probility for consecutive beads
         """
         consecRestraints = []
         for i in range(self.nbead-1):
@@ -280,14 +297,20 @@ class tadmodel(object):
     #--------------probmat restraints
     def _get_minPairRestraints(self,bpair,dist,minnum,kspring = 1):
         """
-            Return restraint decorater of min pair restraints
-            for minnum out of bpairs are satisfied 
-            Parameters:
-            -----------
-            bpair:       tuple list of contact pair candidates
-            dist:        distance upperbound for contact
-            minnum:      minimun number of pairs required to satisify
-            contactRange:scale of (r1+r2) where a contact is defined   
+        Return restraint decorater of min pair restraints
+        for minnum out of bpairs are satisfied 
+        
+        Parameters
+        -----------
+        
+        bpair : tuple list
+            contact pair candidates
+        dist : int
+            distance upperbound for contact
+        minnum : int
+            minimun number of pairs required to satisify
+        contactRange : int 
+            scale of (r1+r2) where a contact is defined   
         """
         ambi = IMP.container.ListPairContainer(self.model)
         restraintName = "Bead [ "
@@ -304,7 +327,7 @@ class tadmodel(object):
     
     def _get_fmaxRestraints(self,kspring=1):
         """
-            return restraints list for prob=1.0
+        return restraints list for prob=1.0
         """
         fmaxrs = []
         for i in range(self.nbead):
@@ -327,10 +350,12 @@ class tadmodel(object):
         return fmaxrs
     def _get_contactRestraints(self,actdist,kspring=1):
         """
-            return restraints list given actdist list
-            parameters:
-            -----------
-            actdist:     Activation distanct array [i,j,dist]
+        return restraints list given actdist list
+        
+        Parameters
+        ----------
+        actdist : array like
+            Activation distanct array [i,j,dist]
         """
         intracontactrs = []
         intercontactrs = []
@@ -405,11 +430,14 @@ class tadmodel(object):
         return s
     def mdstep_withChromosomeTerritory(self,t,step):
         """
-            perform an mdstep with chromosome terriory restraint
-            parameters:
-            -----------
-            t:         temperature
-            step:      optimization steps
+        perform an mdstep with chromosome terriory restraint
+        
+        Parameters
+        -----------
+        t : int
+            temperature
+        step : int
+            optimization steps
         """
         t0 = time.time()
         chrContainers=[]
@@ -638,14 +666,17 @@ class tadmodel(object):
 
 def consecutiveDistanceByProbability(r1,r2,p,xcontact=2):
     """
-        Upper bound distance constraints for consecutive domains
-        return surface to surface distance.
-        parameters:
-        -----------
-        r1,r2:     Radius for beads
-        p:         Probability for contact
-        xcontact:  scaling of (r1+r2) where a contact is defined. By default, 
-                   center to center distance D = 2*(r1+r2) is defined as contact.
+    Upper bound distance constraints for consecutive domains
+    return surface to surface distance.
+    
+    Parameters
+    -----------
+    r1,r2 : int
+        Radius for beads
+    p : float Probability for contact
+    xcontact : int
+        scaling of (r1+r2) where a contact is defined. By default, 
+        center to center distance D = 2*(r1+r2) is defined as contact.
     """
     if p > 0:
         d = (r1+r2)*(1. + (xcontact**3-1)/p)**(1./3.)

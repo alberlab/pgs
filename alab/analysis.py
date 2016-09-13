@@ -42,11 +42,14 @@ class structuresummary(object):
     
     Parameters
     ----------
-    target : the output directory for population structures, containing copy*.hms files\
-             or can be seen as summary file *.hss
-               
-    usegrp : the probablility key used in modeling, e.g. p005j
-    nstruct : number of structures to read
+    
+    target : str
+        the output directory for population structures, containing copy*.hms files
+        or can be seen as summary file *.hss
+    usegrp : str
+        the probablility key used in modeling, e.g. p005j
+    nstruct : int 
+        number of structures to read
     """
     def __init__(self,target,usegrp=None,nstruct=10000,pid=10,**kwargs):
         if os.path.isdir(target):
@@ -159,13 +162,17 @@ class structuresummary(object):
     def findBinIndex(self,chrom,start,end):
         """
         To find bead indexes given a chromosome region
+        
         Parameters
         ----------
-        chrom : chromosome, should match the .idx representation
-        start,end : location range
         
-        Return
-        ------
+        chrom : str
+            chromosome, should match the .idx representation
+        start,end : int
+            location range
+        
+        Returns
+        -------
         Bin indexes array, or None if there is no valid ones
         """
         return utils.intersectMatrixIndex(self.idx,chrom,start,end)
@@ -173,8 +180,8 @@ class structuresummary(object):
     @property
     def totalRestraints(self):
         """
-        Return
-        ------
+        Returns
+        -------
         numpy array : all restraints for each structure
         """
         return self.interRestraints + self.intraRestraints
@@ -182,8 +189,8 @@ class structuresummary(object):
     @property
     def totalViolations(self):
         """
-        Return
-        ------
+        Returns
+        -------
         numpy array : all violations for each structure
         """
         return self.consecutiveViolations + self.contactViolations
@@ -191,8 +198,8 @@ class structuresummary(object):
     @property
     def violationPercentage(self):
         """
-        Return
-        ------
+        Returns
+        -------
         numpy array : violation percentage for each structure
         """
         return self.totalViolations / self.totalRestraints
@@ -228,10 +235,11 @@ class structuresummary(object):
         
         Parameters
         ----------
-        bead1,bead2 : int, two bead in a pair, input to calculate distance
+        bead1,bead2 : int
+            two bead in a pair, input to calculate distance
         
-        Return
-        ------
+        Returns
+        -------
         numpy array that has distance for the bead pair.
         """
         
@@ -243,9 +251,11 @@ class structuresummary(object):
         
         Parameters
         ----------
-        form : the return form of the function
-               'list' return the list form
-               'matrix' return the matrix form
+        
+        form : str
+            the return form of the function
+            'list' return the list form
+            'matrix' return the matrix form
         """
         pdistMean = np.zeros((2*self.nbead,2*self.nbead))
         for i in range(2*self.nbead):
@@ -265,14 +275,16 @@ class structuresummary(object):
         
         Parameters
         ----------
-        beads : array-like, list of all beads to calculate
-        nucleusRadius : radius of nucleus, default 5000(nm)
+        beads : array-like
+            list of all beads to calculate
+        nucleusRadius : float
+            radius of nucleus, default 5000(nm)
         
-        Return
-        ------
+        Returns
+        -------
         M*N matrix : radial position for all beads in the input and all structures in population
-                     M = len(beads)
-                     N = number of structures in population
+            M = len(beads)
+            N = number of structures in population
         """
         allrp = []
         for i in np.array(beads):
@@ -286,10 +298,11 @@ class structuresummary(object):
         
         Parameters
         ----------
-        nucleusRadius : radius of nucleus, default 5000(nm)
+        nucleusRadius : float
+            radius of nucleus, default 5000(nm)
         
-        Return
-        ------
+        Returns
+        -------
         Two 1-D array : mean radian position for all beads, and first array contains the inner bead in the diploid genome.
         """
         
@@ -308,11 +321,13 @@ class structuresummary(object):
         
         Parameters
         ----------
-        chrom : the chromosome to calculate
-        nucleusRadius : radius of nucleus, default 5000(nm)
+        chrom : str    
+            the chromosome to calculate
+        nucleusRadius : float
+            radius of nucleus, default 5000(nm)
         
-        Return
-        ------
+        Returns
+        -------
         2N*1 vector : radial position for the chromosome in all structures in population
         """
         
@@ -337,9 +352,12 @@ class structuresummary(object):
         
         Parameters
         ----------
-        figurename : name of the figure
-        chrom : given chromosome name
-        color : given the color for ploting 
+        figurename : str
+            name of the figure
+        chrom : str
+            given chromosome name
+        color : str
+            given the color for ploting 
         """
         Aids = np.flatnonzero(self.idx['chrom'] == chrom)
         Bids = Aids + self.nbead

@@ -41,18 +41,26 @@ class contactmatrix(object):
     
     Parameters
     ----------
-    filename : matrix file stored in hdf5 format
-               or an integer for the matrix size to initialize an empty matrix instance
-    genome : string for a genome e.g.'hg19','mm9'
-    resolution : int, the resolution for the hic matrix e.g. 100000
-    usechr : list, containing the chromosomes used for generating the matrix
+    filename : str 
+        matrix file stored in hdf5 format
+        or an integer for the matrix size to initialize an empty matrix instance
+    genome : str
+        genome e.g.'hg19','mm9'
+    resolution : int
+        the resolution for the hic matrix e.g. 100000
+    usechr : list
+        containing the chromosomes used for generating the matrix
     
-    Properities
-    -----------
-    matrix : numpy 2d array storing all infor for the hic contact matrix
-    idx : numpy structure array for matrix index
-    genome : string, for the genome
-    resolution : resolution for the contact matrix
+    Attributes
+    ----------
+    matrix : numpy 2d array 
+        storing all infor for the hic contact matrix
+    idx : numpy structure array 
+        matrix index
+    genome : str
+        the genome
+    resolution : int
+        resolution for the contact matrix
     
     """
     _idxdtype = np.dtype([('chrom','S5'),('start',int),('end',int),('flag','S10')])
@@ -172,10 +180,10 @@ class contactmatrix(object):
         Parameters
         ----------
         cutoff : int, 0<cutoff<100
-                 Percent of lowest-counts bins to be removed
+            Percent of lowest-counts bins to be removed
         usepvalue: float, 0<usepvalue<1
-                   use this pvalue as correlation cutoff to remove bins
-                   bins whose pvalue greater than this cutoff will be removed
+            use this pvalue as correlation cutoff to remove bins
+            bins whose pvalue greater than this cutoff will be removed
         """
         if (not self.applyed('removePoorRegions')) or force:
             rowsum   = self.rowsum()
@@ -247,16 +255,19 @@ class contactmatrix(object):
         
     #========================================================normalization methods
     def krnorm(self,mask = None,force=False,**kwargs):
-        """using krnorm balacing the matrix (overwriting the matrix!)
+        """
+        using krnorm balacing the matrix (overwriting the matrix!)
+        
         Parameters
         ----------
+        
         mask : list/array 
-               mask is a 1-D vector with the same length as the matrix where 1s specify the row/column to be ignored
-               or a 1-D vector specifing the indexes of row/column to be ignored
-               if no mask is given, row/column with rowsum==0 will be automatically detected and ignored
+            mask is a 1-D vector with the same length as the matrix where 1s specify the row/column to be ignored
+            or a 1-D vector specifing the indexes of row/column to be ignored
+            if no mask is given, row/column with rowsum==0 will be automatically detected and ignored
         large_mem : bool
-                    when large_mem is set to 1, matrix product is calculated using small chunks, 
-                    but this will slowdown the process a little bit.     
+            when large_mem is set to 1, matrix product is calculated using small chunks, 
+            but this will slowdown the process a little bit.     
         """
         if (not self.applyed('normalization')) or force:
             from norm import bnewt
@@ -303,7 +314,7 @@ class contactmatrix(object):
   
     def range(self,chrom):
         """
-            return the index range for a give chromsome
+        return the index range for a give chromsome
         """
         rangeList = np.flatnonzero(self.idx['chrom'] == chrom)
         if len(rangeList)==0:
@@ -356,10 +367,14 @@ class contactmatrix(object):
         
         Parameters
         ----------
-        w : int of the window size, the smoothing is computed using target +/- w
-        s : weight of the location deviation
-        p : power of the location deviation
-        z : range of standard deviation to set cutoff
+        w : int 
+            the window size, the smoothing is computed using target +/- w
+        s : int 
+            weight of the location deviation
+        p : int
+            power of the location deviation
+        z : int 
+            range of standard deviation to set cutoff
         """
         if self.applyed('subMatrix'):
             raise RuntimeError, "This is a submatrix, genome wide smoothing cannot be applyed."
@@ -396,14 +411,17 @@ class contactmatrix(object):
         
         Parameters
         ----------
-        domainChrom : domain chromosome e.g. 'chr1'
-        domainStartPos : int e.g. 0
-        domainEndPos : int e.g. 700000
+        domainChrom : str
+            domain chromosome e.g. 'chr1'
+        domainStartPos : int 
+            start position e.g. 0
+        domainEndPos : int 
+            end position e.g. 700000
         minSize : int, > 0
-                  min domain size
+            min domain size
         maxSize : int, optional
-                  max domain size, in bins
-                  if the domain is larger than a given number of bins, this function will return None
+            max domain size, in bins
+            if the domain is larger than a given number of bins, this function will return None
         """
         chrStartBin,chrEndBin = self.range(domainChrom)
         domainStartBin  = chrStartBin + int( domainStartPos/ float(self.resolution) )
@@ -426,11 +444,15 @@ class contactmatrix(object):
     def getfmax(self,method = 'UF',minSize=1,maxSize=2000,removeZero=False,boxplotTrim=False,offdiag=1,target='median'):
         """
         calculate fmax based on different methods
+        
         Parameters
         ----------
-        method : NM #neighbouring max
-                 UF #uniform fmax
-        target : 'mean'/'median'
+        
+        method : str
+            NM #neighbouring max
+            UF #uniform fmax
+        target : str
+            'mean'/'median'
         """
         if self.applyed('subMatrix'):
             raise RuntimeError, "This is a submatrix, genome wide fmax cannot be applyed."
@@ -512,11 +534,15 @@ class contactmatrix(object):
     
     def assignDomain(self,domain,pattern=''):
         """
-            Load Domain information
-            Parameters
-            ----------
-            domain: alab.files.bedgraph instance
-            pattern : str a string use to filter the flags in the bedgraph
+        Load Domain information
+        
+        Parameters
+        ----------
+        
+        domain : alab.files.bedgraph instance
+            bedgraph for domain definition
+        pattern : str 
+            a string use to filter the flags in the bedgraph
         """
         from files import bedgraph
         if not isinstance(domain,bedgraph):
@@ -569,13 +595,17 @@ class contactmatrix(object):
     
     def makeDomainLevelMatrix(self,method='topmean',top=10,removeOutlier=True):
         """
-            Use domain INFO to generate Domain level matrix
-            Parameters
-            ----------
-            method : string, "topmean" or "median"
-            top : int 0<top<100
-                  the top percentage to calculate the mean, top=10 means top 10% of the subdomain matrix
-            removeOutlier : option to remove outlier using 1.5IQR
+        Use domain INFO to generate Domain level matrix
+        
+        Parameters
+        ----------
+        
+        method : str
+            "topmean" or "median"
+        top : int 0<top<100
+            the top percentage to calculate the mean, top=10 means top 10% of the subdomain matrix
+        removeOutlier : bool
+            option to remove outlier using 1.5IQR
         """
         if self.applyed('domainLevel'):
             raise RuntimeError, "This is already a domain level matrix!"
@@ -627,18 +657,21 @@ class contactmatrix(object):
     #==============================================================plotting methods
     def plot(self,figurename,log=False,**kwargs):
         """
-            plot the matrix heat map
+        plot the matrix heat map
             
-            Parameters
-            ----------
-            figurename : str
-            log : bool
-                  if True, plot the log scale of the matrix
-                  if False, plot the original matrix
-            clip_max :
-            clip_min : 2 options that will clip the matrix to certain value
-            cmap : color map of the matrix
-            label : label of the figure
+        Parameters
+        ----------
+        figurename : str
+        log : bool
+            if True, plot the log scale of the matrix
+            if False, plot the original matrix
+        clip_max : float
+        clip_min : float
+            2 options that will clip the matrix to certain value
+        cmap : matplotlib.cm instance
+            color map of the matrix
+        label : str
+            label of the figure
         """
         if log:
             plotmatrix(figurename,np.log(self.matrix),**kwargs)
@@ -666,11 +699,11 @@ class contactmatrix(object):
         Parameters
         ----------
         figurename : string
-                     Name of the plot
+            Name of the plot
         outlier: bool
-                 option to select plotting the outlier line, only functioning if 'line' parameter is set to None
+            option to select plotting the outlier line, only functioning if 'line' parameter is set to None
         line : float/array/list
-               draw vertical lines at a list of positions 
+            draw vertical lines at a list of positions 
         """
         rowsum = self.rowsum()
         if line is None:

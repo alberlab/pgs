@@ -351,8 +351,10 @@ class modelstructures(object):
     Parameters
     ----------
     
-    filename : model result file *.hms
-    usegrp : group label array, usually assigned with probability prefix like ['1','0.2']
+    filename : str
+        model result file *.hms
+    usegrp : str
+        group label array, usually assigned with probability prefix like ['1','0.2']
     """
     def __init__(self,filename,usegrp):
         if not os.path.isfile(filename):

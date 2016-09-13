@@ -37,9 +37,9 @@ from alab.args import default_pyflow_args
 from alab.args import extend_pyflow_docstring
 
 #from workflows.define_domain import DefineDomainFlow
-from workflows.build_TAD_map_flow import BuildTADMapFlow
-from workflows.modeling_structure_flow import ModelingStructureFlow
-from workflows.report_flow import ReportFlow
+from pgsflows.build_TAD_map_flow import BuildTADMapFlow
+from pgsflows.modeling_structure_flow import ModelingStructureFlow
+from pgsflows.report_flow import ReportFlow
 
 #import workflows.build_TAD_map_flow.BuildTADMapFlow
 #import workflows.modeling_structure_flow.ModelingStructureFlow
@@ -94,7 +94,7 @@ class GeneratePopulationOfGenomeStructure(WorkflowRunner):
 		###############################################################
 		build_task_config = self.input_config
 		#build_task_config['source_dir'].update({'source_dir' : build_task_config['source_dir'] + "/workflows/script" })
-		build_task_config['source_dir'] = build_task_config['source_dir'] + "/workflows/script" 
+		build_task_config['source_dir'] = build_task_config['source_dir'] + "/pgsflows/script" 
 		
 		#call(["mkdir", "-p", "%s/probMat" % build_task_config['output_dir']])
 				

@@ -7,6 +7,6 @@ setup(
 	author_email = 'shanjun@usc.edu', 
 	url = '', 
 	description = '3D Modeling Pipeline Workflows',
-	packages=['alab', 'workflows', 'workflows.modeling'],
+	packages=['alab'],
 	package_data={'alab' : ['genomes/*']}
 	)

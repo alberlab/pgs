@@ -352,7 +352,7 @@ class modelstructures(object):
     ----------
     
     filename : str
-        model result file *.hms
+        model result file \*.hms
     usegrp : str
         group label array, usually assigned with probability prefix like ['1','0.2']
     """

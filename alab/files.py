@@ -335,7 +335,13 @@ class modelgroup(object):
         pymfile.close()
         return 0
     #=
-    
+    def savepdb(self,filename):
+        import utils
+        pymfile = open(filename,'w')
+        pymfile.write(utils.convertPDB(self.xyz,self.r,self.idx))
+        pymfile.flush()
+        pymfile.close()
+        return 0    
 #-
 class modelstructures(object):
     """

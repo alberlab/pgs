@@ -39,13 +39,14 @@ import plots
 class structuresummary(object):
     """
     This class offers a series of methods to study the model structure populations.
-    parameters:
-    ------------
-    target:    the output directory for population structures, containing copy*.hms files
-               or can be seen as summary file *.hss
+    
+    Parameters
+    ----------
+    target : the output directory for population structures, containing copy*.hms files\
+             or can be seen as summary file *.hss
                
-    usegrp:    the probablility key used in modeling, e.g. p005j
-    nstruct:   number of structures to read
+    usegrp : the probablility key used in modeling, e.g. p005j
+    nstruct : number of structures to read
     """
     def __init__(self,target,usegrp=None,nstruct=10000,pid=10,**kwargs):
         if os.path.isdir(target):
@@ -283,8 +284,8 @@ class structuresummary(object):
         """
         Calculate mean radial position for every bead in structures, and differentiate diploid copy into A/B by inner or outer radial position
         
-        Parameters:
-        -----------
+        Parameters
+        ----------
         nucleusRadius : radius of nucleus, default 5000(nm)
         
         Return

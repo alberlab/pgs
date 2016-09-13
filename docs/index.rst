@@ -28,7 +28,7 @@ Contents:
    quickstart
    results
    faq
-    
+   alabapi
 
 * :ref:`genindex`
 

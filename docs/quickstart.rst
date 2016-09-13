@@ -45,7 +45,7 @@ With this, a user can generate a command script ``runPgs.sh`` and a configuratio
 
 
 Using the PGS Helper
---------------
+--------------------
 
 To initialize PGS Helper:
 
@@ -63,7 +63,7 @@ The following GUI will appear:
    
 
 A. Working Directory
-~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~
 
 Specify the project/working directory using the ``Browse`` button on right side. PGS will run in the specified project directory and all files, 
 such as running script(i.e. ``runPGS.sh``), configuration file(i.e. ``input_config.json``),  log(i.e. ``pyflow.data``), and output results, 

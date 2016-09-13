@@ -23,109 +23,57 @@ __email__   = "htjong@usc.edu"
 
 
 import numpy as np
-import string
 import sys
-from itertools import izip
-import re
+import alab
 
-import alab.matrix
-import alab.analysis
-import alab.utils
+def convertPDB(xyz,r,idx):
+    """
+    Given xyz r and index list, convert to pdb format string file content
+    """
+    assert len(idx)*2 == len(r)
+    assert len(r) == len(xyz)
+    #Locate centromere bead
+    cenbead = np.flatnonzero(idx['flag']=='CEN')
+    #output
+    pdbtext = ""
+    offset = -len(idx)
+    for copy in ['A','B']:
+        offset += len(idx)
+        chrNum  = 0
+        chrStart= 0
+        for i in range(len(idx)):
+            chrom = idx[i]['chrom']
+            if chrom != idx[cenbead[chrNum]]['chrom']:
+                chrNum += 1
+                chrStart = i
+            if i == cenbead[chrNum]:
+                arm = "CEN"
+            elif i < cenbead[chrNum]:
+                arm = "PAM"
+            else:
+                arm = "QAM"
+            
+            chrchain = chr(chrNum+97) #convert to lowercase letters
+            
+            (x,y,z) = xyz[i+offset]
+            line="ATOM %6d  %s %-3s %s %3d    %7.1f %7.1f %7.1f %5.0f\n"%(i+1,arm,copy+chrom.lstrip('chr'),chrchain,i-chrStart+1,x,y,z,r[i+offset])
+            
+            pdbtext += line
+        #=
+    #==
+    return pdbtext
 
-
-hmsfile = '../result/structure/copy0.hms'
-problvl = ['0.1b']
-outfile = 'copy0.pdb'
+hmsfile = sys.argv[1]
+problvl = sys.argv[2]
+outfile = sys.argv[3]
 
 hms = alab.modelstructures(hmsfile, problvl)
-bidx = hms.idx
-nbead = bidx.shape[0]
-chrs = list(set(bidx['chrom']))
-nchr = len(chrs)
-xyz = hms[0].xyz #diploid set of coordinates
 
-#-----------------------------------------------------------------------
-letters = string.letters[:26]
-def pdbformat(n,a,ch,rid,resn,x,y,z,r):
-    '''get a pdb formatted string '''
-    line="ATOM %6d  %s %-3s %s %3d    %7.1f %7.1f %7.1f %5.0f\n"%(n,a,ch,rid,resn,x,y,z,r)
-    return line
-
-def chrblock(coor,rad,ids,pos,cen,chain,q):
-    n = 0
-    pdb_block = []
-    for (x,y,z),r,i in izip(coor,rad,ids):
-        n += 1
-        if (i == cen):
-            atmid = 'CEN'
-        elif (i < q ):
-            atmid = 'PAM'
-        else:
-            atmid = 'QAM'
-        resid = pos + ch.lstrip('chr')
-        pdb_block.append(pdbformat(i,atmid,resid,chain,n,x,y,z,r))
-    return pdb_block
-
-def com_rg(v,rd):
-    mass = [l**3 for l in rd]
-    xm1 = [(m1*i1,m1*j1,m1*k1) for (i1,j1,k1), m1 in izip(v,mass)]
-    totm = sum(mass)
-    comxyz = [sum(u)/totm for u in izip(*xm1)] #center of mass coordinates
-    mma = sum( u**2 for u in comxyz )
-    rcom = np.sqrt(mma)
-    return rcom
-
-def atoi(text):
-    return int(text) if text.isdigit() else text
-
-def natural_keys(text):
-    '''
-    alist.sort(key=natural_keys) sorts in human order
-    http://nedbatchelder.com/blog/200712/human_sorting.html
-    '''
-    return [ atoi(c) for c in re.split('(\d+)', text) ]
-
-chrs.sort(key=natural_keys)
-#-----------------------------------------------------------------------
-
-cenbead = np.flatnonzero(bidx['flag']=='CEN') #centromere representatives
-cenbead_dict = {}
-for ch,i in izip(bidx['chrom'][cenbead],cenbead):
-    cenbead_dict[ch] = i
+pdb = convertPDB(hms[0].xyz,hms[0].r,hms[0].idx)
+pdbfile = open(outfile,'w')
+pdbfile.write(pdb)
+pdbfile.flush()
+pdbfile.close()
 
 
-allcoord1 = xyz[:nbead] #first homologue
-allcoord2 = xyz[nbead:] #second homologue
-allrad = [hms[0].r[k][0] for k in range(nbead)]
 
-fout=open(outfile,'w')
-chrcount = 0 #for letters indicating chromosome
-apdbs = []
-bpdbs = []
-for ch in chrs:
-    chrchain = letters[chrcount]
-    cen = cenbead_dict[ch]
-    q = cen + 1
-    chidx = np.flatnonzero(bidx['chrom']==ch)  #index or bead id, first column
-    nb = len(chidx)
-    chra_coor = [allcoord1[i] for i in chidx]
-    chrb_coor = [allcoord2[i] for i in chidx]
-    chr_rad = [allrad[i] for i in chidx]
-    arcom = com_rg(chra_coor,chr_rad)
-    brcom = com_rg(chrb_coor,chr_rad)
-    if arcom < brcom:
-        apdbs.append(chrblock(chra_coor,chr_rad,chidx,'A',cen,chrchain,q))
-        bpdbs.append(chrblock(chrb_coor,chr_rad,chidx,'B',cen,chrchain,q))
-    else:
-        apdbs.append(chrblock(chrb_coor,chr_rad,chidx,'A',cen,chrchain,q))
-        bpdbs.append(chrblock(chra_coor,chr_rad,chidx,'B',cen,chrchain,q))
-    chrcount += 1
-for line in apdbs:
-    for l in line:
-        fout.write(l)
-for line in bpdbs:
-    for l in line:
-        fout.write(l)
-fout.close()
-
-sys.exit()

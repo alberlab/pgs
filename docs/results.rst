@@ -77,7 +77,7 @@ A successful PGS execution will generate a ``result`` folder which composed of 4
 
 
 * Getting PDB
-    Some users might wish to get the coordinates and radii in a PDB format, maybe for visualization purpose. Hence we provide a script under ``tool/`` directory. Simply execute the following shell command under ``$PROJECT_DIR/``:
+    Some users might wish to get the coordinates and radii in a PDB format, maybe for visualization purpose. Hence we provide some nice scripts under ``tool/`` directory. Simply execute the following shell command under ``$PROJECT_DIR/``:
 
 	::
 

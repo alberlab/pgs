@@ -76,5 +76,34 @@ A successful PGS execution will generate a ``result`` folder which composed of 4
                 write code...........................
 
 
+* Getting PDB
+    Some users might wish to get the coordinates and radii in a PDB format, maybe for visualization purpose. Hence we provide a script under ``tool/`` directory. Simply execute the following shell command under ``$PROJECT_DIR/``:
+
+	::
+
+            $ tools/hms_export.py result/structure/copy0.hms 0.01b copy0.pdb
+
+    The script takes 3 arguments (hmsfile, theta_group, and output_name), then a pdb file will be saved and it looks like this:
+
+	::
+
+            ATOM      1  PAM A1  a   1     2899.1    58.6   855.0   218
+            ATOM      2  PAM A1  a   2     3029.7   286.1  1257.0   244
+            ATOM      3  PAM A1  a   3     2575.2   106.8  1117.7   202
+            ....      .  ... ..  .   .     ......  ......  ......   ...
+            ....      .  ... ..  .   .     ......  ......  ......   ...
+            ATOM   1214  QAM BX  w  65    -2206.8   183.8  2465.6   202
+            ATOM   1215  QAM BX  w  66    -2452.5   434.7  3049.5   238
+
+    Note:
+
+    - The first half of coordinates belong to the first diploid copy, the second half contains the homologues.
+    - The last 4 columns are x, y, z, and radius, respectively.
+    - PAM and QAM marks the p-arm and q-arm of a chromosome, respectively.
+    - CEN marks the centromere representative TAD.
+
+
+
+
 
 

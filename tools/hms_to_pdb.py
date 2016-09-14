@@ -19,7 +19,7 @@
 __author__  = "HTjong & Nan Hua"
 __license__ = "GPL"
 __version__ = "0.0.1"
-__email__   = "htjong@usc.edu"
+__email__   = "htjong@usc.edu, nhua@usc.edu"
 
 
 import numpy as np

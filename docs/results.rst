@@ -12,98 +12,18 @@ A successful PGS execution will generate a ``result`` folder which composed of 4
 - ``report`` : contains preliminary analysis with some plots.
 
 
-.. topic:: Tools to get results shown under the ``report`` directory
 
-        Once all PGS tasks are completed (e.g. "Workflow successfully completed all tasks" printed on the screen or in ``$PROJECT_DIR/pyflow.data/logs/pyflow_log.txt``), users can analyze the final structures using alberlab analysis tools. The following are some examples of how to extract information from the structure-population using Python.
-
-        Identify which model you would like to see, e.g. result/structure/copy0.hms. You can check group names in the file using a simple bash command:
-	::
-
-		$ h5ls result/structure/copy0.hms
+heatmap
+------------------
 
 
-	And something like this will appear:
-            
-	::
-
-                0.01b                    Group
-                0.01a                    Group
-                0.01                     Group
-                0.05                     Group
-                0.1                      Group
-                0.2                      Group
-                1                        Group
-                genome                   Dataset {SCALAR}
-                idx                      Dataset {2320}
+intraMatrix
+------------------
 
 
-                                   
-
-       	In that example, the "idx" has information of 2320 TADs and it saves iteration snapshots at theta = {1, .., 0.01, 0.01a, 0.01b}. Thus the final structure is in group "0.01b" (at theta level p=0.01 there are 3 A/M iteration cycles).
-
-
-* Getting the coordinates
-	::
-
-                import alab
-                import sys
-                hmsfile = 'result/structure/copy0.hms
-                problvl = '0.01a'
-                hms = alab.modelstructures(hmsfile, [problvl])
-                TADidx = hms.idx  #TADs information
-                xyz = hms[0].xyz #diploid set of coordinates
+radialPlot
+------------------
 
 
-    Now the user can use the coordinates, stored in ``xyz``, to do any analysis. The TAD information with genomic location is stored in ```TADidx``` variable. In the following we provide some other usage of coordinates.
-	
-
-* Getting the contact probability map 
-    We show example lines on how to get contact probability maps under ``result/report/heatmap`` and ``result/report/intraMatrix```
-
-	::
-
-                import alab
-                import sys
-                write a code here....................
-
-* Getting the radial position
-    Radial position of a TAD is calculated by the average radial positions across the structure population of that TAD. 0 marks the center of nucleus, and 1 marks nuclear envelope.
-
-	::
-
-                import alab
-                import sys
-                write code...........................
-
-
-* Getting PDB
-    Some users might wish to get the coordinates and radii in a PDB format, maybe for visualization purpose. Hence we provide some nice scripts under ``tool/`` directory. Simply execute the following shell command under ``$PROJECT_DIR/``:
-
-	::
-
-            $ tools/hms_export.py result/structure/copy0.hms 0.01b copy0.pdb
-
-    The script takes 3 arguments (hmsfile, theta_group, and output_name), then a pdb file will be saved and it looks like this:
-
-	::
-
-            ATOM      1  PAM A1  a   1     2899.1    58.6   855.0   218
-            ATOM      2  PAM A1  a   2     3029.7   286.1  1257.0   244
-            ATOM      3  PAM A1  a   3     2575.2   106.8  1117.7   202
-            ....      .  ... ..  .   .     ......  ......  ......   ...
-            ....      .  ... ..  .   .     ......  ......  ......   ...
-            ATOM   1214  QAM BX  w  65    -2206.8   183.8  2465.6   202
-            ATOM   1215  QAM BX  w  66    -2452.5   434.7  3049.5   238
-
-    Note:
-
-    - The first half of coordinates belong to the first diploid copy, the second half contains the homologues.
-    - The last 4 columns are x, y, z, and radius, respectively.
-    - PAM and QAM marks the p-arm and q-arm of a chromosome, respectively.
-    - CEN marks the centromere representative TAD.
-
-
-
-
-
-
+violations
+------------------

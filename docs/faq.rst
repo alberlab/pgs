@@ -32,8 +32,12 @@ Frequently Asked Questions
         - All numeric must be integers (Hi-C counts, TAD genomic loci, etc.) except probability values (floating number from 0 to 1). 
 
 
-#. How many structures we need to generate?
-    We think it will depend on your analysis, but in general the more the better. The radial position of chromosomes or TADs, for example, are relatively stable so that hundreds to a thousand of structures are good enough. To reproduce the Hi-C map that comes from million of cells, we need around 10,000 structures. Beyond that we may gain marginal increase of correlations but computational costly. If the analysis involved in rare events like ~1%, consider getting at least 10,000 structures.
+#. What is TAD and how to get it for PGS run?
+    TAD (Topologically Associating Domain) is a continuous genomic region within wich interact relatively frequently, whereas interactions across a TAD boundary occur relatively infrequently. Depending on the genome, their size can vary from tens of kb to a few Mb. We think this is a good chromosomal unit for 3D models. There are many TAD calling algorithm out there you can use. Ours is pretty much simple and quick, it's called `TopDom <https://doi.org/10.1093/nar/gkv1505>`_ and can be `downloaded here <http://zhoulab.usc.edu/TopDom>`_.
+
+
+#. How many structures do I need to generate?
+    We think it will depend on your analysis, but in general the more the better. The radial position of chromosomes or TADs, for example, are relatively stable so that hundreds to a thousand of structures are good enough. To reproduce the Hi-C map that comes from million of cells, we need around 10,000 structures. Beyond that we may gain marginal increase of correlations but computational costly. If the object of study, e.g. higher order interactions, are rare events like ~1%, consider getting at least 10,000 structures.
 
 
 #. What is ``probMat.hdf5.hmat`` under ``result/probMat/`` folder?

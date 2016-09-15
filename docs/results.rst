@@ -1,5 +1,5 @@
 Expected Results
-======================
+================
 
 A successful PGS execution will generate a ``result/`` folder which composed of 4 subfolders: 
 
@@ -15,16 +15,16 @@ A successful PGS execution will generate a ``result/`` folder which composed of 
 The following we describe results under ``report/`` folder.
 
 heatmap
-------------------
+-------
 
 
 intraMatrix
-------------------
+-----------
 
 
 radialPlot
-------------------
+----------
 
 
 violations
-------------------
+----------

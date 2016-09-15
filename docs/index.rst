@@ -6,11 +6,11 @@
 PGS: Population-based Genome Structures modeling tools package
 ==============================================================
 
-PGS is a population-based 3D genome-modeling package implemented by python. 
+PGS is a population-based 3D genome-modeling package implemented in Python. 
 The software takes Hi-C matrix and chromosome regions segmentation or topological associated domains(TADs) information, 
 which then generates an ensemble of structure population. The software also automatically generates analysis reports, 
 such as structure quality based on scoring parameters, plots of radial positions and contact frequency maps from the structures. 
-The whole codes are wrapped in python, and users can simply execute it one time. 
+The whole codes are wrapped in Python, and users can simply execute it one time. 
 
 .. note:: PGS software will run on high performance computing environment (HPC), such as sun grid engine and TORQUE (pbs script), as well as local machine. But, it is highly recommended to run on HPC because of computational resource and running time.
 
@@ -27,6 +27,7 @@ Contents:
    
    quickstart
    results
+   tools
    faq
    alabapi
 

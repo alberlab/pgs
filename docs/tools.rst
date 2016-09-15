@@ -75,7 +75,7 @@ Tools
 
             $ tools/hms_export.py result/structure/copy0.hms 0.01b copy0.pdb
 
-    The script takes 3 arguments (hmsfile, theta_group, and output_name), then a pdb file will be saved and it looks like this:
+    The script takes 3 arguments (hmsfile, theta_group, and output_name), then a pdb file will be saved and it will look something like this:
 
 	::
 
@@ -89,13 +89,15 @@ Tools
 
 ..    Note::
 
-    - The 2nd column marks the TAD id.
-    - PAM and QAM marks the p-arm and q-arm of a chromosome, respectively.
+    - The 2nd column marks the TADs ids.
+    - PAM and QAM marks the short and long arms of a chromosome, respectively.
     - CEN marks the centromere representative TAD.
     - Chromosome homologue (4th column) is labeled as the chromosome name preceeded with A or B, e.g. A1 = the first homolog of chr1, BX = the 2nd homolog of chrX.
     - The first half of coordinates belong to the first diploid copy, the second half contains the homologues.
     - Chain name (5th column) is unique for each chromosome (e.g. chains "a" to "w" are for chr1 to chrX, respectively).
     - The 6th column contains TADs order in a chromosome.
+    - Columns 6-8 record the 3D coordinates.
+    - Column 9 stores the TADs radii.
     - In human genome 3D models, the nuclear radius is set to 5000 nm.
 
 

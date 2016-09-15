@@ -40,7 +40,7 @@ Frequently Asked Questions
 
 
 #. What is TAD and how to get it for PGS run?
-    TAD (Topologically Associating Domain) is a continuous genomic region within wich interact relatively frequently, whereas interactions across a TAD boundary occur relatively infrequently. Depending on the genome, their size can vary from tens of kb to a few Mb. We think this is a good chromosomal unit for 3D models. There are many TAD calling algorithm out there you can use. Ours is pretty much simple and quick, it's called `TopDom <https://doi.org/10.1093/nar/gkv1505>`_ and can be `downloaded here <http://zhoulab.usc.edu/TopDom>`_.
+    TAD (Topologically Associating Domain) is a continuous genomic region within which interact relatively frequently, whereas interactions across a TAD boundary occur relatively infrequently. Depending on the genome, their size can vary from tens of kb to a few Mb. We think this is a good chromosomal unit for 3D models. There are many TAD calling algorithm out there you can use. Ours is pretty much simple and quick, it's called `TopDom <https://doi.org/10.1093/nar/gkv1505>`_ and can be `downloaded here <http://zhoulab.usc.edu/TopDom>`_.
 
 
 #. How many structures do I need to generate?

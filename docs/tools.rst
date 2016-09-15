@@ -87,13 +87,16 @@ Tools
             ATOM   1214  QAM BX  w  65    -2206.8   183.8  2465.6   202
             ATOM   1215  QAM BX  w  66    -2452.5   434.7  3049.5   238
 
-    Note:
+..    Note::
 
-    - The first half of coordinates belong to the first diploid copy, the second half contains the homologues.
-    - The last 4 columns are x, y, z, and radius, respectively.
+    - The 2nd column marks the TAD id.
     - PAM and QAM marks the p-arm and q-arm of a chromosome, respectively.
     - CEN marks the centromere representative TAD.
-    - In human genome 3D models, the nuclear radius is set to 5000.
+    - Chromosome homologue (4th column) is labeled as the chromosome name preceeded with A or B, e.g. A1 = the first homolog of chr1, BX = the 2nd homolog of chrX.
+    - The first half of coordinates belong to the first diploid copy, the second half contains the homologues.
+    - Chain name (5th column) is unique for each chromosome (e.g. chains "a" to "w" are for chr1 to chrX, respectively).
+    - The 6th column contains TADs order in a chromosome.
+    - In human genome 3D models, the nuclear radius is set to 5000 nm.
 
 
 

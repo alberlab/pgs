@@ -43,7 +43,7 @@ With this, a user can generate a command script ``runPgs.sh`` and a configuratio
 .. tip:: PGS Helper uses `Java Runtime Envrionment <http://www.oracle.com/technetwork/java/javase/downloads/index.html>`_, the latest Java SE 8 update is recommended. 
 
 
-.. note:: PGS Helper is a convenient interface but not required to run PGS. For users that do not have Java installed, we provide the ``runPgs.sh`` and ``input_config.json`` template files that are easy to modify. 
+.. note:: PGS Helper is a convenient interface but not required to run PGS. We also provide the ``runPgs.sh`` and ``input_config.json`` examples that are easy to modify (skip to `PGS Helper Output`_). 
 
 
 
@@ -139,7 +139,7 @@ There will be a confirmation window with ``Yes`` or ``No`` button, and at this p
 PGS Helper Output
 -----------------
 
-PGSInputGenerator creates ``input_config.json`` containing all necessary information, and an execution script (``runPGS.sh``) under the project directory. 
+PGSHelper writes configuration in ``input_config.json``, and a shell script (``runPGS.sh``) under the project directory. 
 The following describes the contents of those 2 files.
 
 1. ``$PROJECT_DIR/input_config.json``

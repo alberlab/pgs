@@ -43,6 +43,9 @@ With this, a user can generate a command script ``runPgs.sh`` and a configuratio
 .. tip:: PGS Helper uses `Java Runtime Envrionment <http://www.oracle.com/technetwork/java/javase/downloads/index.html>`_, the latest Java SE 8 update is recommended. 
 
 
+.. note:: PGS Helper is a convenient interface but not required to run PGS. For users that do not have Java installed, we provide the ``runPgs.sh`` and ``input_config.json`` template files that are easy to modify. 
+
+
 
 Using the PGS Helper
 --------------------

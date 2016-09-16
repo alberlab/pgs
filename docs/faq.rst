@@ -16,13 +16,14 @@ Frequently Asked Questions
     Yes, you should. Replace ``"qname"`` with your queue on HPC, but please do not delete the quote marks there (you may also delete this option and its value if you usually do not need to specify it when you submit jobs). Replace ``hh:mm:ss`` with number of hours, minutes, and seconds you wish to limit the time for a job to run. You can also add additional options with similar syntax (place a pair of quotes for each new option and its value, separated by a comma, and keep the brackets as it is).
 
 
-3. How long I expect the PGS to complete 1,000 structures?
-    It depends on the computing power you assign it to. A typical M-step for 2 x 2000 TADs can take around one hour. It will also depend on the theta list you set (correspond to A/M iteration cycles). The lower theta value will give more restraints to optimize, thus the longer is an A/M cycle. If you have 1,000 cpus running for PGS, and there will be 10 A/M cycles, you might get the final population in ~10 hours.
+3. How long should I expect the PGS to complete 1,000 structures?
+    It depends on the computing power you assign it to. A typical M-step for 2 x 2320 TADs can take around 45 minutes on our HPC cluster (2.6 GHz speed). It will also depend on the theta list you set (correspond to A/M iteration cycles). The lower theta value will give more restraints to optimize, thus the longer is an A/M cycle. If you have 1,000 cpus running for PGS, and there will be 10 A/M cycles, you might get the final population in ~8 hours.
 
 
 4. Some nodes of my computing clusters crashed and some of PGS jobs were terminated, what should I do?
     No worries, PGS can resubmit the fail jobs for you automatically and continues without problems. If PGS is still running, you do not need to do anything, just wait.
-.. warning:: Do not alter ``pyflow.data/`` during PGS run. It contains logs and workflow state information. Deleting this folder will cause PGS to run from the beggining of the workflow again.
+
+.. warning::  Do not alter ``pyflow.data/`` during PGS run. It contains logs and workflow state information. Deleting this folder will cause PGS to run from the beggining of the workflow again.
 
 
 5. I accidentally killed the terminal where PGS is running, how should I proceed PGS?
@@ -49,6 +50,23 @@ Frequently Asked Questions
 
 #. What is ``probMat.hdf5.hmat`` under ``result/probMat/`` folder?
     It is a TAD-TAD probability matrix obtained from your raw matrix or converted from your TAD-TAD probability matrix text file. This matrix can be used to get a replica population: copy it to a new directory, run the PGS-helper and choose option 3.
+
+
+#. Are the messages on screen while PGS is running saved somewhere?
+    Yes, the stdout log messages are accumulated in your working directory under ``pyflow.data/logs/pyflow_log.txt``.
+
+
+#. What is the ``pyflow.data/logs/pyflow_tasks_stdout_log.txt`` for?
+    It contains detail information of all specific running jobs, i.e. processing matrix and modeling report (timing and scoring for all structures at all A/M cycles). For instance, you can search for "copy0.hms" in the log file and see how it performs from initial to final stages.
+
+
+
+#. Any reference for the PGS?
+    - Kalhor *et al.* `Genome architectures revealed by tethered chromosome conformation capture and population-based modeling <http://dx.doi.org/10.1038/nbt.2057>`_. *Nat. Biotechnol.* **30**, 90-98 (2012).
+    - Tjong *et al.* `Population-based 3D genome structure analysis reveals driving forces in spatial genome organizations <http://dx.doi.org/10.1073/pnas.1512577113>`_. *PNAS* **113**, E1663-E1672 (2016).
+    - Coming soon....
+
+
 
 
 

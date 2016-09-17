@@ -29,6 +29,7 @@ Contents:
    results
    tools
    faq
+   misc
    alabapi
 
 * :ref:`genindex`

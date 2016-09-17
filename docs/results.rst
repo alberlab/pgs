@@ -17,14 +17,23 @@ The following we describe results under ``report/`` folder.
 heatmap
 -------
 
+Contains genome-wide heat map plots of contact probabilities, calculated from both the model population and experiment data (input matrix). A figure showing density scatter plots (log-log scale) as a comparison between them is also provided.
+
 
 intraMatrix
 -----------
+
+Contains heat map plots of contact probabilities for every chromosome, calculated from both the model population and experiment data (input matrix).
+
 
 
 radialPlot
 ----------
 
+Contains scater plots of mean radial position of all TADs, organized by chromosomes in pdf files. The mean radial positions are also recorded in a text file ``radialPlot_summary.txt``.
+
 
 violations
 ----------
+
+Contains a text file that tells the average portion of violated restraints per model.

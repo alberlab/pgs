@@ -156,7 +156,7 @@ The following describes the contents of those 2 files.
         "output_dir" : "[Output Directory to store the results, e.g. $PROJECT_DIR/result]",
         
         "modeling_parameters" : {
-            "theta_list" : [Theta list] e.g, ["1", "0.2", "0.1","0.05","0.02","0.01"],
+            "theta_list" : [Theta list e.g, "1", "0.2", "0.1","0.05","0.02","0.01"],
             "num_of_structures" : [Number of structure to generate, e.g. 1000],
             "max_iter_per_theta" : [Max Iterations per job, e.g. 10],
             "violation_cutoff" : [Violation Cutoff, e.g. 0.05]

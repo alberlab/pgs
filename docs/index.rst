@@ -29,8 +29,8 @@ Contents:
    results
    tools
    faq
-   misc
    alabapi
+   misc
 
 * :ref:`genindex`
 

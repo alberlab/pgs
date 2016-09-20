@@ -1,0 +1,19 @@
+{
+    "input":{
+        "genome":"hg19",
+        "resolution":INTEGER_input_matrix_bin_resolution,
+        "raw_matrix_file":"STRING",
+        "TAD_file":"STRING"},
+    "system":{
+        "default_memMB":1500,
+        "max_core":8,
+        "max_memMB":64000,
+        "default_core":1},
+    "modeling_parameters":{
+        "violation_cutoff":0.05,
+        "max_iter_per_theta":3,
+        "theta_list":["1","0.2","0.1","0.05","0.02","0.01", "0.008"],
+        "num_of_structures":10000},
+    "output_dir":"STRING",
+    "source_dir":"STRING"
+}

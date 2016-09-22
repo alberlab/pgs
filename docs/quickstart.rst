@@ -43,6 +43,9 @@ With this, a user can generate a command script ``runPgs.sh`` and a configuratio
 .. tip:: PGS Helper uses `Java Runtime Envrionment <http://www.oracle.com/technetwork/java/javase/downloads/index.html>`_, the latest Java SE 8 update is recommended. 
 
 
+.. note:: PGS Helper is a convenient interface but not required to run PGS. We also provide the ``runPgs.sh`` and ``input_config.json`` examples that are easy to modify (`PGS Helper Output`_) without using the GUI. 
+
+
 
 Using the PGS Helper
 --------------------
@@ -136,7 +139,7 @@ There will be a confirmation window with ``Yes`` or ``No`` button, and at this p
 PGS Helper Output
 -----------------
 
-PGSInputGenerator creates ``input_config.json`` containing all necessary information, and an execution script (``runPGS.sh``) under the project directory. 
+PGSHelper writes configuration in ``input_config.json``, and a shell script (``runPGS.sh``) under the project directory. 
 The following describes the contents of those 2 files.
 
 1. ``$PROJECT_DIR/input_config.json``
@@ -153,7 +156,7 @@ The following describes the contents of those 2 files.
         "output_dir" : "[Output Directory to store the results, e.g. $PROJECT_DIR/result]",
         
         "modeling_parameters" : {
-            "theta_list" : [Theta list] e.g, ["1", "0.2", "0.1","0.05","0.02","0.01"],
+            "theta_list" : [Theta list e.g, "1", "0.2", "0.1","0.05","0.02","0.01"],
             "num_of_structures" : [Number of structure to generate, e.g. 1000],
             "max_iter_per_theta" : [Max Iterations per job, e.g. 10],
             "violation_cutoff" : [Violation Cutoff, e.g. 0.05]

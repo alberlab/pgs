@@ -23,6 +23,16 @@ import shlex
 # documentation root, use os.path.abspath to make it absolute, like shown here.
 #sys.path.insert(0, os.path.abspath('.'))
 sys.path.insert(0, os.path.abspath('..'))
+# Hack to avoid building scientific modules on RTD.
+# http://blog.rtwilson.com/how-to-make-your-sphinx-documentation-compile-with-
+# readthedocs-when-youre-using-numpy-and-scipy/
+import mock
+MOCK_MODULES = ['numpy', 'scipy', 'h5py' , 'pandas' ,
+                'matplotlib' ,'matplotlib.pyplot','matplotlib.colors','seaborn',
+                'IMP','IMP.core','IMP.container','IMP.algebra','IMP.atom']
+for mod_name in MOCK_MODULES:
+  sys.modules[mod_name] = mock.Mock()
+
 # -- General configuration ------------------------------------------------
 
 # If your documentation needs a minimal Sphinx version, state it here.

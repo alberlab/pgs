@@ -143,8 +143,8 @@ def main(input_config):
 	print "Total time spent is %.1fs" % (alab.utils.timespend(tstart))
 	newmodel.logger.debug(u"================================")
 	print "================================"
-	newmodel.logger.warning(u"Evaulating Contacts")
-	print "Evaulating Contacts"
+	newmodel.logger.warning(u"Evaluating Contacts")
+	print "Evaluating Contacts"
 	newmodel.logger.warning(u"Consecutive Beads:")
 	print "Consecutive Beads:"
 	total = newmodel.evaluateRestraints(newmodel.consecutiveBeadRestraints)

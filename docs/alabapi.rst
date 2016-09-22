@@ -1,5 +1,5 @@
-Alab API Reference
-==================
+Alberlab API Reference
+======================
 
 .. toctree::
    :maxdepth: 1

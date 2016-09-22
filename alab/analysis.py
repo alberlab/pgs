@@ -44,8 +44,8 @@ class structuresummary(object):
     ----------
     
     target : str
-        the output directory for population structures, containing copy*.hms files
-        or can be seen as summary file *.hss
+        the output directory for population structures, containing copy\*.hms files
+        or can be seen as summary file \*.hss
     usegrp : str
         the probablility key used in modeling, e.g. p005j
     nstruct : int 

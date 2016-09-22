@@ -1,1 +1,1 @@
-{"input":{"genome":"hg19","resolution":500000,"raw_matrix_file":"data\/rawmat.txt.gz","TAD_file":"data\/tad.bed"},"system":{"default_memMB":1500,"max_core":8,"max_memMB":64000,"default_core":1},"output_dir":"workflow_test\/result","modeling_parameters":{"violation_cutoff":0.05,"max_iter_per_theta":5,"theta_list":["1","0.2","0.1","0.05","0.02"],"num_of_structures":10},"source_dir":"..\/pgs"}
+input_config_probMat_run_test.json

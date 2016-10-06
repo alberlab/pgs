@@ -38,7 +38,6 @@ Tools
 	::
 
                 import alab
-                import sys
                 hmsfile = 'result/structure/copy0.hms
                 problvl = '0.01a'
                 hms = alab.modelstructures(hmsfile, [problvl])
@@ -55,18 +54,23 @@ Tools
 	::
 
                 import alab
-                import sys
-                write a code here....................
+                
+                hmsfiledir = 'result/structure'
+                problvl = '0.01a'
+                nstruct = 1000
+                summary = alab.structuresummary(hmsfiledir, problvl, nstruct)
+                m = summary.getContactMap()
+                m.plot('heatmap.png',format='png',clip_max=1)     
+                m.makeIntraMatrix('chr1').plot('chr1_heatmap.pdf',format='pdf',clip_max=1)
 
 * Getting the radial position
     Radial position of a TAD is calculated by the average radial positions across the structure population of that TAD. 0 marks the center of nucleus, and 1 marks nuclear envelope.
 
 	::
 
-                import alab
-                import sys
-                write code...........................
-
+                rp = summary.getBeadRadialPosition(beads=range(len(summary.idx)*2))
+                rp_mean = rp.mean(axis=1)
+                rp_hapmean = (rp_mean[:len(summary.idx)]+rp_mean[len(summary.idx):])/2
 
 * Getting PDB
     Some users might wish to get the coordinates and radii in a PDB format, maybe for visualization purpose. Hence we provide some nice scripts under ``tool/`` directory. Simply execute the following shell command under ``$PROJECT_DIR/``:

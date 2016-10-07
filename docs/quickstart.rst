@@ -34,6 +34,17 @@ Then install PGS workflow packages:
 
     $ python setup.py install
     
+
+To test if the installation goes well, the following command can be executed:
+
+::
+
+    $ cd test
+    $ ./runPgs_workflow_test.sh
+    
+
+
+
 PGS Helper GUI
 --------------
 

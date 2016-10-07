@@ -5,7 +5,7 @@ Frequently Asked Questions
 .. topic:: FAQ
 
 
-    We are happy to update this list with your questions, please send inquiry to ``nhua@usc.edu``.
+    We are happy to update this list with your questions, please write them on the `GitHub page <https://github.com/alberlab/pgs/issues>`_.
 
 
 1. What is PGS for?

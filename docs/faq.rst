@@ -4,9 +4,7 @@ Frequently Asked Questions
 
 .. topic:: FAQ
 
-
-    We are happy to update this list with your questions, please leave comments on `Github <https://github.com/alberlab/pgs>`_ .
-
+    We are happy to update this list with your questions, please write them on the `GitHub page <https://github.com/alberlab/pgs/issues>`_.
 
 1. What is PGS for?
     It is a user-friendly software package to compute 3D genome structures from contact frequency data (e.g. Hi-C matrix). Since it generates a lot of structures (population), it is better to run it on HPC clusters. Be ready to give a generous amount of disk space (a typical intermediate structure file can be ~4MB. But once a structure summary file is created (~1.2 GB for 10,000 structures), the intermediate files can be deleted).

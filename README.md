@@ -75,5 +75,5 @@ User can run pgs package through the following command.
 
 ### References
 
-Tjong *et al.* `Population-based 3D genome structure analysis reveals driving forces in spatial genome organizations <http://dx.doi.org/10.1073/pnas.1512577113>`_. *PNAS* **113**, E1663-E1672 (2016).
+Tjong *et al.* [Population-based 3D genome structure analysis reveals driving forces in spatial genome organizations](http://dx.doi.org/10.1073/pnas.1512577113). *PNAS* **113**, E1663-E1672 (2016).
 

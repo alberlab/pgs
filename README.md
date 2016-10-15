@@ -3,8 +3,6 @@
 [![Build Status](https://travis-ci.org/alberlab/pgs.svg?branch=master)](https://travis-ci.org/alberlab/pgs)
 [![Documentation Status](https://readthedocs.org/projects/pgs/badge/?version=latest)](http://pgs.readthedocs.io/en/latest/?badge=latest)
 
----
-
 PGS is a population-based 3D genome-modeling package implemented in Python. 
 The software takes Hi-C matrix and chromosome regions segmentation or topological associated domains(TADs) information, 
 which then generates an ensemble of structure population. The software also automatically generates analysis reports, 
@@ -16,10 +14,14 @@ The whole codes are wrapped in Python, and users can simply execute it one time.
 
 Here is the overview of PGS pipeline:
 
+<p align="center">
+  <img src="https://github.com/alberlab/pgs/blob/master/docs/images/pgs_overview.png" width="600" />
+</p>
 ![PGS Overview] (docs/images/pgs_overview.png)
 
-### Installation
+---
 
+### Installation
 
 Requirements:
 

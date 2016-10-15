@@ -17,7 +17,6 @@ Here is the overview of PGS pipeline:
 <p align="center">
   <img src="https://github.com/alberlab/pgs/blob/master/docs/images/pgs_overview.png" width="600" />
 </p>
-![PGS Overview] (docs/images/pgs_overview.png)
 
 ---
 
@@ -65,7 +64,9 @@ To initialize PGS Helper:
 
 The following GUI will appear:
 
-![PGS Helper] (docs/images/pgs_helper.png)
+<p align="center">
+  <img src="https://github.com/alberlab/pgs/blob/master/docs/images/pgs_helper.png" width="500" />
+</p>
    
 ### RUN PGS
 

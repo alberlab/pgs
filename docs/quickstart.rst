@@ -136,8 +136,8 @@ F. Command Setup
 - Run mode : select a platform such as local computer, Sun Grid Engine (SGE) or Torque. 
 - Core limit : the maximum number of cores for PGS to use (limited to user’s quota).
 - Mem limit : the limit of memory for PGS to use.
-- Optional argument list : additional options for each job to run/be assigned properly on the user’s hpc, such as queue name, running time, etc. Note that the option list will be applied to each job.
-   E.g. ``[‘-l’,’your_qname_here’,’-l’,’walltime=333:00:00’]``
+- Optional argument list : additional options for each job to run/be assigned properly on the user’s HPC, such as queue name, running time, etc. Example arguments for PBS jobs: ``[‘-l’,’your_qname_here’,’-l’,’walltime=333:00:00’]``.
+  Note that the option list will be applied to each job.
 
 G. Generate Scripts 
 ~~~~~~~~~~~~~~~~~~~

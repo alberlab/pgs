@@ -60,7 +60,7 @@ class tadmodel(object):
         default:None will record everything during caculation
         debug, info, warning, error, critical are supported
     """
-    def __init__(self,probfile,nucleusRadius=5000.0,contactRange=1,level=None):
+    def __init__(self,probfile,nucleusRadius=5000.0,chromosomeOccupancy=0.2,contactRange=1,level=None):
         self.probmat = alabmatrix.contactmatrix(probfile)
         self.nbead   = len(self.probmat)
         #setup log
@@ -74,24 +74,29 @@ class tadmodel(object):
         self.logger.addHandler(chhandler)
         self.logger.setLevel(loglevel)
         #CONST
-        rscale               = 1.38                  # 20% occupancy
+        #rscale               = 1.38                  # 20% occupancy
+        self.occupancy       = chromosomeOccupancy   #chromosome occupancy in nucleus, defined as diploid_domain_total_volume/nuclear_volume
+
         self.nucleusRadius   = nucleusRadius         # nm
-        cdensity             = 107.45                # bp/nm assuming 197 bp/nucleosomes and 6 nucleosome/11 nm
-        kscale               = (0.75*15**2)**(1.0/3.0) # 3/4*r**2 where r=15nm
+        #cdensity             = 107.45                # bp/nm assuming 197 bp/nucleosomes and 6 nucleosome/11 nm
+        #kscale               = (0.75*15**2)**(1.0/3.0) # 3/4*r**2 where r=15nm
         self.contactRange    = contactRange          # surface to surface distance scale of (r1+r2)
                                                      # for which 2 beads are considered as contact 
+        self.genome          = alabutils.genome(self.probmat.genome)
+        rho                  = (self.occupancy*self.nucleusRadius**3/(2*sum(self.genome.info['length'])))**(1.0/3.0)
         #get radius of each bead
-        self.beadRadius = [rscale * kscale * ((index['end'] - index['start'])/cdensity) ** (1.0/3.0) for index in self.probmat.idx]
+        self.beadRadius = [(rho * (index['end'] - index['start'])) ** (1.0/3.0) for index in self.probmat.idx]
+        #self.beadRadius = [rscale * kscale * ((index['end'] - index['start'])/cdensity) ** (1.0/3.0) for index in self.probmat.idx]
         #calculate the total volumn of DNA (diploid) and nucleus
         dnavol   = sum(4. * 3.1415/3. * np.array(self.beadRadius)**3) * 2 
         nucvol   = (4*3.1415/3)*self.nucleusRadius**3
         #And chromosome occupancy
         dnaocc   = dnavol / nucvol
-        self.logger.debug(u'occupancy: %.2f with Rnuc %d'%(dnaocc,self.nucleusRadius))
+        self.logger.debug(u'Occupancy: %.2f with Rnuc %d'%(dnaocc,self.nucleusRadius))
         #diploid Rb; 2xtotal haploid beads 
         self.beadRadius = self.beadRadius + self.beadRadius
         # Chromosome territory apply
-        self.genome = alabutils.genome(self.probmat.genome)
+        #self.genome = alabutils.genome(self.probmat.genome)
         cscale=1.0
         chrvol = nucvol * self.genome.info['length']/sum(self.genome.info['length'])/2
         self.chromRadius=cscale*((chrvol/4*3/3.1415)**(1./3.))

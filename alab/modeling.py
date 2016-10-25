@@ -83,7 +83,7 @@ class tadmodel(object):
         self.contactRange    = contactRange          # surface to surface distance scale of (r1+r2)
                                                      # for which 2 beads are considered as contact 
         self.genome          = alabutils.genome(self.probmat.genome)
-        rho                  = (self.occupancy*self.nucleusRadius**3/(2*sum(self.genome.info['length'])))**(1.0/3.0)
+        rho                  = self.occupancy*self.nucleusRadius**3/(2*sum(self.genome.info['length']))
         #get radius of each bead
         self.beadRadius = [(rho * (index['end'] - index['start'])) ** (1.0/3.0) for index in self.probmat.idx]
         #self.beadRadius = [rscale * kscale * ((index['end'] - index['start'])/cdensity) ** (1.0/3.0) for index in self.probmat.idx]

@@ -42,6 +42,12 @@ def main(input_config):
 	probfile = str( input_config['modeling_parameters']['probMat'] )
 	lastfb = str( input_config['modeling_parameters']['last_theta'] )
 	currentfb = str( input_config['modeling_parameters']['theta'] )
+	nucleusRadius = float(
+            #something to add, default 5000
+            )
+	chromosomeOccupancy = float(
+            #something to add, default 0.2
+            )  
 	output_file = str( input_config['modeling_parameters']['output_file'] )
 	actdistfile = str( input_config['modeling_parameters']['last_actDist'] )
 	
@@ -51,7 +57,7 @@ def main(input_config):
 	if actdistfile != None and os.path.isfile(actdistfile) :
 		useLastCoordinates = True
 		
-	newmodel = alab.modeling.tadmodel(probfile,nucleusRadius=5000.0,contactRange=1)
+	newmodel = alab.modeling.tadmodel(probfile,nucleusRadius=nucleusRadius,chromosomeOccupancy=chromosomeOccupancy,contactRange=1)
 	tstart = time.time()
 
 	if useLastCoordinates:

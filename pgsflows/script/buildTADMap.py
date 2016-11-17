@@ -40,8 +40,8 @@ __email__   = "nhua@usc.edu"
 def main(matrixfile, domainfile, outputfile, genome, resolution) : #fileFormat):
 	#load matrix in to memory along with idx info, genome version, and resolution of the matrix
 	
-	if genome != 'hg19':
-		raise Exception('pgs v%s does not support %s genome yet' % (__version__, genome))
+#	if genome != 'hg19':
+#		raise Exception('pgs v%s does not support %s genome yet' % (__version__, genome))
 	
 	#outputfile = '%s/probMat.hdf5.hmat' % output_dir
 	

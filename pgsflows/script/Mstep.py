@@ -42,12 +42,15 @@ def main(input_config):
 	probfile = str( input_config['modeling_parameters']['probMat'] )
 	lastfb = str( input_config['modeling_parameters']['last_theta'] )
 	currentfb = str( input_config['modeling_parameters']['theta'] )
-	nucleusRadius = float(
-            #something to add, default 5000
-            )
-	chromosomeOccupancy = float(
-            #something to add, default 0.2
-            )  
+	
+	nucleusRadius = 5000.0
+	if input_config['modeling_parameters'].has_key('nucleus_radius') :
+		nucleusRadius = float( input_config['modeling_parameters']['nucleus_radius'] )
+	
+	chromosomeOccupancy = 0.2
+	if input_config['modeling_parameters'].has_key('chr_occupancy') :
+		chromosomeOccupancy = float( input_config['modeling_parameters']['chr_occupancy'] )
+	
 	output_file = str( input_config['modeling_parameters']['output_file'] )
 	actdistfile = str( input_config['modeling_parameters']['last_actDist'] )
 	

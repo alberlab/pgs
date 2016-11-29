@@ -76,6 +76,15 @@ if __name__=='__main__':
 	if args.genome == 'hg19':
 		chrList = ['chr%i' % i for i in range(1,22)]
 		chrList.append('chrX')
+	elif args.genome == 'hg36':
+		chrList = ['chr%i' % i for i in range(1,22)]
+		chrList.append('chrX')
+	elif args.genome == 'mm9' :
+		chrList = ['chr%i' % i for i in range(1,19)]
+		chrList.append('chrX')
+	elif args.genome == 'mm10':
+		chrList = ['chr%i' % i for i in range(1,19)]
+		chrList.append('chrX')	
 	else :
 		raise Exception("Current %s genome is not supported" % args.genome)
 	

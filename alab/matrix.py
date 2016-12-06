@@ -88,6 +88,13 @@ class contactmatrix(object):
                 s    = f.next()
                 line = re.split('\t+|\s+',s.rstrip())
                 n    = len(line) - 3
+                expectn = n
+                if isinstance(genome,str) and isinstance(resolution,int):
+                    genomedb    = alabutils.genome(genome,usechr=usechr)
+                    bininfo     = genomedb.bininfo(resolution)
+                    expectn     = len(bininfo.chromList)
+                if expectn != n:
+                    raise RuntimeError, "Dimension don't match, expected %s bins , get %s bins. Please check the input." %(expectn,n)
                 idx  = []
                 i    = 0
                 tidx = line[0:3];tidx.append('')

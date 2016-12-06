@@ -94,6 +94,8 @@ C. Input
 
 .. image:: images/fileFormat.png
 
+.. note:: Currently our pipeline only support diploid genome, so chromosome Y is not supported and please don't include it in the input file. We will be updating the support for chromosome Y soon.
+
 - Experiment data
 
   *Option 1 : Raw + TAD*
@@ -171,6 +173,8 @@ The following describes the contents of those 2 files.
             "num_of_structures" : [Number of structure to generate, e.g. 1000],
             "max_iter_per_theta" : [Max Iterations per job, e.g. 10],
             "violation_cutoff" : [Violation Cutoff, e.g. 0.05]
+            "chr_occupancy" : [Chromosome Occupancy, e.g. 0.2]
+            "nucleus_radius" : [Nucleus Radius (nm), e.g. 5000.0]
         },
         "system" : {
             "max_core" : [Maximum number of cores in a single node],

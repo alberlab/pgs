@@ -122,6 +122,8 @@ D. Modeling Parameters
 - Violation cutoff : violation cutoff. ``default = 0.05``
 - Theta list : a probability list for step-wise optimizations; 1 < theta < 0. ``default = 1, 0.2, 0.1, 0.05, 0.02, 0.01``
 - Max iteration : the number of maximum iterations for each theta. ``default = 10``
+- Chromosome Occupancy : the expected ratio of chromosome volume in the nucleus. ``default = 0.2``
+- Nucleus Radius : assumed radius (nm) of cell nucleus. Changing this value will change the relative size of each domain sphere. ``default = 5000.0``
 
 E. System Parameters
 ~~~~~~~~~~~~~~~~~~~~

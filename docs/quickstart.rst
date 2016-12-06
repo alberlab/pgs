@@ -112,7 +112,7 @@ C. Input
   
      * Probability matrix file (hdf5) : if a user have generated probability matrix using PGS (i.e. under old ``$PROJECT_DIR/result/probMat/probMat.hdf5.hmat``), then the user can use the previous probability matrix. This process will skip the first workflow, buildTADMap task. This option is good for replica calculations (in a new working directory, of course).
 
-- Genome : the genome version of 3D models being constructed (current PGS supports only hg19 with chromosomes 1-22 and X).
+- Genome : the genome version of 3D models being constructed (current PGS supports chromosomes 1-22 and X).
 - Resolution : the resolution of raw input data (in bp).
 
 D. Modeling Parameters

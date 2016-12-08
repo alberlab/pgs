@@ -111,7 +111,7 @@ Tools
 
 	::
 
-            $ tools/hms_to_hss.py 0.01b structures_001b.hss
+            $ tools/hms_to_hss.py result/strcuture/ 1000 0.01b structures_001b.hss
 
     This command outputs a summary file called "structures_001b.hss" which contains all coordinates of the last optimized structure population, their radii, TAD information, optimization scores, etc. At this point, if the user is not interested in the structures at intermediate steps, all ``structure/copy*.hms`` files can be deleted to release some disk space.
 

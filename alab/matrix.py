@@ -758,7 +758,7 @@ def loadh5dict(filename):
 def loadhic(filename,genome='hg19',resolution=100000,usechr=['#','X'],verbose=False):
     from . import straw
     
-    tgenome = utils.genome(genome)
+    tgenome = alabutils.genome(genome)
     bininfo = tgenome.bininfo(resolution)
 
     m = contactmatrix(len(bininfo.chromList),genome=genome,resolution=resolution,usechr=usechr)

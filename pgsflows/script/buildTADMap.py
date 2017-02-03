@@ -44,9 +44,9 @@ def main(matrixfile, domainfile, outputfile, genome, resolution) : #fileFormat):
 #		raise Exception('pgs v%s does not support %s genome yet' % (__version__, genome))
     
     #outputfile = '%s/probMat.hdf5.hmat' % output_dir
-    if not os.path.isfile(filename):
-        raise IOError,"File %s doesn't exist!\n" % (filename)
-    if os.path.splitext(filename)[1] == '.hic':
+    if not os.path.isfile(matrixfile):
+        raise IOError,"File %s doesn't exist!\n" % (matrixfile)
+    if os.path.splitext(matrixfile)[1] == '.hic':
         m = alab.matrix.loadhic(matrixfile,genome=genome,resolution=resolution)
     else:
         m = alab.matrix.contactmatrix(matrixfile, genome=genome, resolution=resolution )

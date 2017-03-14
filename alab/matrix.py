@@ -782,3 +782,29 @@ def loadhic(filename,genome='hg19',resolution=100000,usechr=['#','X'],verbose=Fa
     #--
     
     return m
+
+def loadcooler(filename,usechr=['#','X'],verbose=False):
+    import scipy.sparse
+    
+    h5         = h5py.File(filename,'r')
+    genome     = str(h5.attrs['genome-assembly'])
+    resolution = h5.attrs['bin-size']
+    nbins      = h5.attrs['nbins']
+    
+    if verbose:
+        print genome, resolution
+    
+    tgenome = utils.genome(genome)
+    bininfo = tgenome.bininfo(resolution)
+    sp = scipy.sparse.csr_matrix((h5['pixels']['count'],h5['pixels']['bin2_id'],h5['indexes']['bin1_offset']),shape=(nbins,nbins))
+   
+    m = contactmatrix(len(bininfo.chromList),genome=genome,resolution=resolution,usechr=usechr)
+    m.matrix = sp.toarray()[:len(m.idx),:len(m.idx)].astype(np.float32)
+    h5.close()
+    
+    t = m.matrix.diagonal().copy()
+    m.matrix[np.diag_indices(len(m.idx))] = 0
+    m.matrix += m.matrix.T
+    m.matrix[np.diag_indices(len(m.idx))] = t
+    
+    return m

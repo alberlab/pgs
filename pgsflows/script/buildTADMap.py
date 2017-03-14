@@ -48,6 +48,8 @@ def main(matrixfile, domainfile, outputfile, genome, resolution) : #fileFormat):
         raise IOError,"File %s doesn't exist!\n" % (matrixfile)
     if os.path.splitext(matrixfile)[1] == '.hic':
         m = alab.matrix.loadhic(matrixfile,genome=genome,resolution=resolution)
+    elif os.path.splitext(matrixfile)[1] == '.cool':
+        m = alab.matrix.loadcooler(matrixfile)
     else:
         m = alab.matrix.contactmatrix(matrixfile, genome=genome, resolution=resolution )
     #m = None

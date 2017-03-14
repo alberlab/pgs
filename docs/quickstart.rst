@@ -101,8 +101,8 @@ C. Input
   *Option 1 : Raw + TAD*
   
      * Raw contact matrix file (txt); the first three columns contain chromosome, start position (bp), and end position (bp) and followed by contact matrix (all numeric values must be **integers**; see figure above).
-     **Important**
-     **Raw dense matrix is inefficient for HiC data sharing, we support `*.hic <https://github.com/theaidenlab/juicer/wiki/Data>`_ and `*.cool <https://github.com/mirnylab/cooler/>`_ format**
+     **Important**:
+     Raw dense matrix is inefficient for HiC data sharing, we support `*.hic <https://github.com/theaidenlab/juicer/wiki/Data>`_ and `*.cool <https://github.com/mirnylab/cooler/>`_ format
      * TAD_file (bed); a 4-column chromatin segmentation or TAD file, we adopt `bed file format <https://genome.ucsc.edu/FAQ/FAQformat.html>`_ while the 4-th column must contain "domain", "CEN", and "gap" (see figure above). 
   
   *Option 2 : TAD-TAD Prob(txt) + TAD*

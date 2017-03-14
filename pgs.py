@@ -51,7 +51,7 @@ __author__  = "Hanjun Shin"
 __credits__ = ["Nan Hua"]
 
 __license__ = "GPL"
-__version__ = "0.0.1"
+__version__ = "1.0.1"
 __email__   = "nhua@usc.edu"
 
 class GeneratePopulationOfGenomeStructure(WorkflowRunner):

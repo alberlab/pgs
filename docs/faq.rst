@@ -60,9 +60,10 @@ Frequently Asked Questions
 
 
 #. Any reference for the PGS?
+    - Hua *et al.* `PGS: a dynamic and automated population-based genome structure software < https://doi.org/10.1101/103358>`_. *BioRxiv* (2017).
+    
     - Kalhor *et al.* `Genome architectures revealed by tethered chromosome conformation capture and population-based modeling <http://dx.doi.org/10.1038/nbt.2057>`_. *Nat. Biotechnol.* **30**, 90-98 (2012).
     - Tjong *et al.* `Population-based 3D genome structure analysis reveals driving forces in spatial genome organizations <http://dx.doi.org/10.1073/pnas.1512577113>`_. *PNAS* **113**, E1663-E1672 (2016).
-    - Coming soon....
 
 
 

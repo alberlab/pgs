@@ -9,6 +9,8 @@ which then generates an ensemble of structure population. The software also auto
 such as structure quality based on scoring parameters, plots of radial positions and contact frequency maps from the structures. 
 The whole codes are wrapped in Python, and users can simply execute it one time. 
 
+To get started, please follow the instructions below or read our [Documentation](<http://pgs.readthedocs.io/en/latest/>).
+
 > Note:
 > PGS software will run on high performance computing environment (HPC), such as sun grid engine and TORQUE (pbs script), as well as local machine. But, it is highly recommended to run on HPC because of computational resource and running time.
 

@@ -67,8 +67,8 @@ master_doc = 'index'
 
 # General information about the project.
 project = u'PGS: Population-based Genome Structure modeling'
-copyright = u'2016, Hanjun Shin, Nan Hua, Harianto Tjong'
-author = u'Hanjun Shin, Nan Hua, Harianto Tjong'
+copyright = u'2017, Nan Hua, Harianto Tjong, Hanjun Shin'
+author = u'Nan Hua, Harianto Tjong, Hanjun Shin'
 
 # The version info for the project you're documenting, acts as replacement for
 # |version| and |release|, also used in various other places throughout the
@@ -252,7 +252,7 @@ latex_elements = {
 #  author, documentclass [howto, manual, or own class]).
 latex_documents = [
   (master_doc, 'PGS.tex', u'PGS: Population-based Genome Structure Modeling Documentation',
-   u'Hanjun Shin, Nan Hua, Harianto Tjong', 'manual'),
+   u'Nan Hua, Harianto Tjong, Hanjun Shin', 'manual'),
 ]
 
 # The name of an image file (relative to this directory) to place at the top of

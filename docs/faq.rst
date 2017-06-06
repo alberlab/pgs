@@ -19,10 +19,11 @@ Frequently Asked Questions
         - For HiC-Pro users, one can use `HiC-Pro utilities tool <http://nservant.github.io/HiC-Pro/UTILS.html#hicpro2juicebox-sh>`_ to convert to juicebox \*.hic format.
         - For hiclib/mirnylib users, check out `Cooler package <https://github.com/mirnylab/cooler/>`_ CLI interface. Here is the example to convert hiclib output to cooler format:
 
-        ::
+    ::
+    
             cooler cload --hiclib --assembly <genome_assembly> bins.bed your_fragment_dataset.hdf5 output_cooler.cool
     
-        -
+        
             
 #. How long should I expect the PGS to complete 1,000 structures?
     It depends on the computing power you assign it to. A typical M-step for 2 x 2320 TADs can take around 45 minutes on our HPC cluster (2.6 GHz speed). It will also depend on the theta list you set (correspond to A/M iteration cycles). The lower theta value will give more restraints to optimize, thus the longer is an A/M cycle. If you have 1,000 cpus running for PGS, and there will be 10 A/M cycles, you might get the final population in ~8 hours.

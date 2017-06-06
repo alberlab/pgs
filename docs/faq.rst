@@ -16,7 +16,7 @@ Frequently Asked Questions
 #. I have matrix output from other pipeline, how can I convert my matrix file to acceptable input for PGS?
     We are adding support for the commonly used matrix format. However it would never be complete. There are various ways to convert your matrix to fit PGS input.
         - The easiest way is to output it as dense matrix format described in :doc:`quickstart`. 
-        - For HiC-Pro users, one can use `HiC-Pro utilities tool <http://nservant.github.io/HiC-Pro/UTILS.html#hicpro2juicebox-sh>`_ to convert to juicebox *.hic format.
+        - For HiC-Pro users, one can use `HiC-Pro utilities tool <http://nservant.github.io/HiC-Pro/UTILS.html#hicpro2juicebox-sh>`_ to convert to juicebox \*.hic format.
         - For hiclib/mirnylib users, check out `Cooler package <https://github.com/mirnylab/cooler/>`_ CLI interface. Here is the example to convert hiclib output to cooler format:
 
         ::
@@ -31,7 +31,7 @@ Frequently Asked Questions
 #. Some nodes of my computing clusters crashed and some of PGS jobs were terminated, what should I do?
     No worries, PGS can resubmit the fail jobs for you automatically and continues without problems. If PGS is still running, you do not need to do anything, just wait.
 
-.. warning::  Do not alter ``pyflow.data/`` during PGS run. It contains logs and workflow state information. Deleting this folder will cause PGS to run from the beggining of the workflow again.
+    .. warning::  Do not alter ``pyflow.data/`` during PGS run. It contains logs and workflow state information. Deleting this folder will cause PGS to run from the beggining of the workflow again.
 
 
 #. I accidentally killed the terminal where PGS is running, how should I proceed PGS?
@@ -70,7 +70,7 @@ Frequently Asked Questions
 
 
 #. Any reference for the PGS?
-    - Hua *et al.* `PGS: a dynamic and automated population-based genome structure software < https://doi.org/10.1101/103358>`_. *BioRxiv* (2017).
+    - Hua *et al.* `PGS: a dynamic and automated population-based genome structure software <https://doi.org/10.1101/103358>`_. *BioRxiv* (2017).
     
     - Kalhor *et al.* `Genome architectures revealed by tethered chromosome conformation capture and population-based modeling <http://dx.doi.org/10.1038/nbt.2057>`_. *Nat. Biotechnol.* **30**, 90-98 (2012).
     - Tjong *et al.* `Population-based 3D genome structure analysis reveals driving forces in spatial genome organizations <http://dx.doi.org/10.1073/pnas.1512577113>`_. *PNAS* **113**, E1663-E1672 (2016).

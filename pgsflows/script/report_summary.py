@@ -76,7 +76,7 @@ if __name__=='__main__':
 	if args.genome == 'hg19':
 		chrList = ['chr%i' % i for i in range(1,22)]
 		chrList.append('chrX')
-	elif args.genome == 'hg36':
+	elif args.genome == 'hg38':
 		chrList = ['chr%i' % i for i in range(1,22)]
 		chrList.append('chrX')
 	elif args.genome == 'mm9' :

@@ -229,11 +229,11 @@ class contactmatrix(object):
         intermask = self.idx['chrom'][:,None] < self.idx['chrom'][None,:]
         interflatten = self.matrix[intermask]
         interflatten = interflatten[interflatten > 0]
-        originHist = np.histogram(interflatten,interflatten.max())[0]
-        repeatResults = np.zeros((N,interflatten.max()),dtype=int)
+        originHist = np.histogram(interflatten,int(interflatten.max()))[0]
+        repeatResults = np.zeros((N,int(interflatten.max())),dtype=int)
         for i in range(N):
             tmpChoice = np.random.choice(interflatten,len(interflatten))
-            repeatResults[i] = alabutils.listadd(repeatResults[i],np.histogram(tmpChoice,tmpChoice.max())[0])
+            repeatResults[i] = alabutils.listadd(repeatResults[i],np.histogram(tmpChoice,int(tmpChoice.max()))[0])
       
         comparison = np.std(repeatResults,axis=0) >= originHist/2
         i = len(comparison) -1

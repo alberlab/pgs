@@ -80,7 +80,7 @@ User can run pgs package through the following command.
 
 ### References
 
-Hua *et al.* [PGS: a dynamic and automated population-based genome structure software](https://doi.org/10.1101/103358). *BioRxiv* (2017).
+Hua *et al.* [Producing genome structure populations with the dynamic and automated PGS software](http://dx.doi.org/10.1038/nprot.2018.008). *Nature Protocols* **13** 915-926 (2018).
 
 Tjong *et al.* [Population-based 3D genome structure analysis reveals driving forces in spatial genome organizations](http://dx.doi.org/10.1073/pnas.1512577113). *PNAS* **113**, E1663-E1672 (2016).
 
